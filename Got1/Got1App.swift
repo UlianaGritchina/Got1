@@ -13,8 +13,25 @@ struct Got1App: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
+            TabView {
+                MainView()
+                    .tabItem {
+                        Label("Main", systemImage: "house.fill")
+                    }
+                KingsView()
+                    .tabItem {
+                        Label("Kings", systemImage: "crown.fill")
+                    }
+                
+                TeamsView()
+                    .tabItem {
+                        Label("Teams", systemImage: "person.3.fill")
+                    }
+            }
+
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
