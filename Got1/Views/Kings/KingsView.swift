@@ -9,12 +9,13 @@ import SwiftUI
 
 struct KingsView: View {
     @StateObject var viewModel = KingsViewViewModel()
+    let king = Player(name: "a", house: "d")
     var body: some View {
         NavigationView {
             
             List {
                 Button(action: {
-                    CoreDataManager.shered.addKing(player: Player(name: "a", house: "b"))
+                    viewModel.addKing(player: king)
                 }) {
                     Text("Button")
                 }

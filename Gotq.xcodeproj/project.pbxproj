@@ -52,14 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E220C1527EF150200F63124 /* Got1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Got1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E220C1527EF150200F63124 /* Gotq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gotq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E220C1827EF150200F63124 /* Got1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Got1App.swift; sourceTree = "<group>"; };
 		0E220C1C27EF150300F63124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E220C1F27EF150300F63124 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0E220C2427EF150300F63124 /* Got1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Got1.xcdatamodel; sourceTree = "<group>"; };
-		0E220C2A27EF150300F63124 /* Got1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Got1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E220C2A27EF150300F63124 /* GotqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GotqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E220C2E27EF150300F63124 /* Got1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Got1Tests.swift; sourceTree = "<group>"; };
-		0E220C3427EF150300F63124 /* Got1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Got1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E220C3427EF150300F63124 /* GotqUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GotqUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E220C3827EF150300F63124 /* Got1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Got1UITests.swift; sourceTree = "<group>"; };
 		0E220C3A27EF150300F63124 /* Got1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Got1UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0E220C4727EF153800F63124 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -120,9 +120,9 @@
 		0E220C1627EF150200F63124 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E220C1527EF150200F63124 /* Got1.app */,
-				0E220C2A27EF150300F63124 /* Got1Tests.xctest */,
-				0E220C3427EF150300F63124 /* Got1UITests.xctest */,
+				0E220C1527EF150200F63124 /* Gotq.app */,
+				0E220C2A27EF150300F63124 /* GotqTests.xctest */,
+				0E220C3427EF150300F63124 /* GotqUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,9 +249,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E220C1427EF150200F63124 /* Got1 */ = {
+		0E220C1427EF150200F63124 /* Gotq */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E220C3E27EF150300F63124 /* Build configuration list for PBXNativeTarget "Got1" */;
+			buildConfigurationList = 0E220C3E27EF150300F63124 /* Build configuration list for PBXNativeTarget "Gotq" */;
 			buildPhases = (
 				0E220C1127EF150200F63124 /* Sources */,
 				0E220C1227EF150200F63124 /* Frameworks */,
@@ -261,14 +261,14 @@
 			);
 			dependencies = (
 			);
-			name = Got1;
+			name = Gotq;
 			productName = Got1;
-			productReference = 0E220C1527EF150200F63124 /* Got1.app */;
+			productReference = 0E220C1527EF150200F63124 /* Gotq.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0E220C2927EF150300F63124 /* Got1Tests */ = {
+		0E220C2927EF150300F63124 /* GotqTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E220C4127EF150300F63124 /* Build configuration list for PBXNativeTarget "Got1Tests" */;
+			buildConfigurationList = 0E220C4127EF150300F63124 /* Build configuration list for PBXNativeTarget "GotqTests" */;
 			buildPhases = (
 				0E220C2627EF150300F63124 /* Sources */,
 				0E220C2727EF150300F63124 /* Frameworks */,
@@ -279,14 +279,14 @@
 			dependencies = (
 				0E220C2C27EF150300F63124 /* PBXTargetDependency */,
 			);
-			name = Got1Tests;
+			name = GotqTests;
 			productName = Got1Tests;
-			productReference = 0E220C2A27EF150300F63124 /* Got1Tests.xctest */;
+			productReference = 0E220C2A27EF150300F63124 /* GotqTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0E220C3327EF150300F63124 /* Got1UITests */ = {
+		0E220C3327EF150300F63124 /* GotqUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E220C4427EF150300F63124 /* Build configuration list for PBXNativeTarget "Got1UITests" */;
+			buildConfigurationList = 0E220C4427EF150300F63124 /* Build configuration list for PBXNativeTarget "GotqUITests" */;
 			buildPhases = (
 				0E220C3027EF150300F63124 /* Sources */,
 				0E220C3127EF150300F63124 /* Frameworks */,
@@ -297,9 +297,9 @@
 			dependencies = (
 				0E220C3627EF150300F63124 /* PBXTargetDependency */,
 			);
-			name = Got1UITests;
+			name = GotqUITests;
 			productName = Got1UITests;
-			productReference = 0E220C3427EF150300F63124 /* Got1UITests.xctest */;
+			productReference = 0E220C3427EF150300F63124 /* GotqUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -325,7 +325,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0E220C1027EF150100F63124 /* Build configuration list for PBXProject "Got1" */;
+			buildConfigurationList = 0E220C1027EF150100F63124 /* Build configuration list for PBXProject "Gotq" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -338,9 +338,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0E220C1427EF150200F63124 /* Got1 */,
-				0E220C2927EF150300F63124 /* Got1Tests */,
-				0E220C3327EF150300F63124 /* Got1UITests */,
+				0E220C1427EF150200F63124 /* Gotq */,
+				0E220C2927EF150300F63124 /* GotqTests */,
+				0E220C3327EF150300F63124 /* GotqUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -421,12 +421,12 @@
 /* Begin PBXTargetDependency section */
 		0E220C2C27EF150300F63124 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0E220C1427EF150200F63124 /* Got1 */;
+			target = 0E220C1427EF150200F63124 /* Gotq */;
 			targetProxy = 0E220C2B27EF150300F63124 /* PBXContainerItemProxy */;
 		};
 		0E220C3627EF150300F63124 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0E220C1427EF150200F63124 /* Got1 */;
+			target = 0E220C1427EF150200F63124 /* Gotq */;
 			targetProxy = 0E220C3527EF150300F63124 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -486,7 +486,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -541,6 +541,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -562,6 +563,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -592,6 +594,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -612,24 +615,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "ugritchina-icloud.com.Got1Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Got1.app/Got1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gotq.app/Gotq";
 			};
 			name = Debug;
 		};
@@ -637,12 +642,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -654,7 +660,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Got1.app/Got1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gotq.app/Gotq";
 			};
 			name = Release;
 		};
@@ -707,7 +713,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0E220C1027EF150100F63124 /* Build configuration list for PBXProject "Got1" */ = {
+		0E220C1027EF150100F63124 /* Build configuration list for PBXProject "Gotq" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E220C3C27EF150300F63124 /* Debug */,
@@ -716,7 +722,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E220C3E27EF150300F63124 /* Build configuration list for PBXNativeTarget "Got1" */ = {
+		0E220C3E27EF150300F63124 /* Build configuration list for PBXNativeTarget "Gotq" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E220C3F27EF150300F63124 /* Debug */,
@@ -725,7 +731,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E220C4127EF150300F63124 /* Build configuration list for PBXNativeTarget "Got1Tests" */ = {
+		0E220C4127EF150300F63124 /* Build configuration list for PBXNativeTarget "GotqTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E220C4227EF150300F63124 /* Debug */,
@@ -734,7 +740,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E220C4427EF150300F63124 /* Build configuration list for PBXNativeTarget "Got1UITests" */ = {
+		0E220C4427EF150300F63124 /* Build configuration list for PBXNativeTarget "GotqUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E220C4527EF150300F63124 /* Debug */,

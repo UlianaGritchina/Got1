@@ -5,31 +5,32 @@
 //  Created by Ульяна Гритчина on 29.03.2022.
 //
 
-import Foundation
+import SwiftUI
 import CoreData
 
 class CoreDataManager {
     let container: NSPersistentContainer
     
     static let shered = CoreDataManager()
+    @Published var savedKings: [King] = []
     
     init() {
-        container = NSPersistentContainer(name: "King")
+        container = NSPersistentContainer(name: "Got1")
         container.loadPersistentStores { description, error in
             if let error = error {
                 print(error)
             }
         }
+        fetchKings()
     }
     
-    func fetchKings() -> [King] {
+    func fetchKings()  {
         let request = NSFetchRequest<King>(entityName: "King")
         request.sortDescriptors = [NSSortDescriptor(keyPath: \King.date, ascending: false)]
         do {
-            return try container.viewContext.fetch(request)
+            savedKings =  try container.viewContext.fetch(request)
         } catch let error {
             print(error)
-            return []
         }
     }
     
@@ -37,6 +38,7 @@ class CoreDataManager {
         let king = King(context: container.viewContext)
         king.name = player.name
         king.house = player.house
+        king.date = Date()
         saveData()
     }
     
@@ -48,8 +50,9 @@ class CoreDataManager {
     private func saveData() {
         do {
             try container.viewContext.save()
+            fetchKings()
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
     

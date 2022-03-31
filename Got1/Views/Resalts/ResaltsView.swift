@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ResaltsView: View {
     @StateObject var viewModel: ResaltsViewViewModel
-    
     init (resalt: Resalt) {
         _viewModel = StateObject(
             wrappedValue: ResaltsViewViewModel(resalt: resalt)
@@ -34,6 +33,11 @@ struct ResaltsView: View {
                 
                 SaveKingAlert(king: viewModel.king,
                               additon: viewModel.resalt.addition,
+                              saveAction: {
+                    viewModel.saveKing()
+                    delegate.updateKings()
+                    
+                },
                               showKing: $viewModel.isShowKingAlert)
             }
             .navigationTitle(viewModel.resalt.addition)
@@ -97,6 +101,7 @@ struct HouseRow: View {
 struct SaveKingAlert: View {
     let king: Player
     let additon: String
+    let saveAction: () -> Void
     @Binding var showKing: Bool
     var formattedDate: String {
         let dateFormatter = DateFormatter()
@@ -126,7 +131,7 @@ struct SaveKingAlert: View {
                                     .padding()
                             }
                             Button(action: {
-                                CoreDataManager.shered.addKing(player: king)
+                                saveAction()
                                 showKing.toggle()
                                 
                             }) {

@@ -15,12 +15,16 @@ class ResaltsViewViewModel: ObservableObject {
         dateFormatter.dateFormat = "MMMM dd, YYY"
         return dateFormatter.string(from: Date())
     }
-    
+   
     @Published var king: Player = Player(name: "", house: "")
     @Published var isShowKingAlert = false
     
     init(resalt: Resalt) {
         self.resalt = resalt
+    }
+    
+    func saveKing() {
+        CoreDataManager.shered.addKing(player: king)
     }
     
 }

@@ -9,6 +9,16 @@ import Foundation
 
 class KingsViewViewModel: ObservableObject {
     
-    @Published var kings: [King] = CoreDataManager.shered.fetchKings()
+    @Published var kings: [King] = CoreDataManager.shered.savedKings
+    
+    func addKing(player: Player) {
+        CoreDataManager.shered.addKing(player: player)
+        updateKings()
+    }
 
+    func updateKings() {
+        CoreDataManager.shered.fetchKings()
+        kings = CoreDataManager.shered.savedKings
+    }
+    
 }
