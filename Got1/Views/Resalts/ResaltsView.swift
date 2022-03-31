@@ -35,7 +35,6 @@ struct ResaltsView: View {
                               additon: viewModel.resalt.addition,
                               saveAction: {
                     viewModel.saveKing()
-                    delegate.updateKings()
                     
                 },
                               showKing: $viewModel.isShowKingAlert)

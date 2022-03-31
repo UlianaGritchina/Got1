@@ -24,7 +24,7 @@ class ResaltsViewViewModel: ObservableObject {
     }
     
     func saveKing() {
-        CoreDataManager.shered.addKing(player: king)
+        CoreDataManager.shered.addKing(player: king, addition: resalt.addition)
     }
     
 }

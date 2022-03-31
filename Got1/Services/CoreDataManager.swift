@@ -34,10 +34,11 @@ class CoreDataManager {
         }
     }
     
-    func addKing(player: Player) {
+    func addKing(player: Player, addition: String) {
         let king = King(context: container.viewContext)
         king.name = player.name
         king.house = player.house
+        king.addition = addition
         king.date = Date()
         saveData()
     }
