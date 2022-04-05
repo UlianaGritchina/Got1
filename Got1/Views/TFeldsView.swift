@@ -16,9 +16,13 @@ struct TFeldsView: View {
             VStack {
                 ForEach(1...4, id: \.self) { index  in
                     TextField("Player \(index)", text: $players[index - 1])
+                        .keyboardType(.default)
+                        .disableAutocorrection(true)
+                    
                         .frame(width: width / 2.2, height: height / 20)
                         .font(.system(size: height / 30))
                         .multilineTextAlignment(.center)
+                    
                 }
             }
             VStack {
@@ -33,8 +37,11 @@ struct TFeldsView: View {
         
     }
 }
+
 struct TFeldsView_Previews: PreviewProvider {
     static var previews: some View {
         TFeldsView(players: .constant(["","","","","","","",""]))
     }
 }
+
+

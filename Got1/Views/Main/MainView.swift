@@ -31,15 +31,15 @@ struct MainView: View {
             }
             .navigationTitle("Players")
             .preferredColorScheme(.dark)
-        }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button("Done") {UIApplication.shared.endEditing()}
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {UIApplication.shared.endEditing()}
+                }
             }
-        }
-        .sheet(isPresented: $viewModel.showResaltsView) {
-            ResaltsView(resalt: viewModel.resalt)
+            .sheet(isPresented: $viewModel.showResaltsView) {
+                ResaltsView(resalt: viewModel.resalt)
+            }
         }
         
     }

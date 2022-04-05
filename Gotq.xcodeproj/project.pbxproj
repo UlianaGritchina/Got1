@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E07F7EC27F6D6CA00B9D02B /* TeamViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E07F7EB27F6D6CA00B9D02B /* TeamViewViewModel.swift */; };
 		0E220C1927EF150200F63124 /* Got1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E220C1827EF150200F63124 /* Got1App.swift */; };
 		0E220C1D27EF150300F63124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E220C1C27EF150300F63124 /* Assets.xcassets */; };
 		0E220C2027EF150300F63124 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E220C1F27EF150300F63124 /* Preview Assets.xcassets */; };
@@ -29,9 +30,11 @@
 		0E6E8BAF27F2D957006C7E2A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8BAE27F2D957006C7E2A /* CoreDataManager.swift */; };
 		0E6E8BB127F2E6A6006C7E2A /* KingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8BB027F2E6A6006C7E2A /* KingsViewViewModel.swift */; };
 		0E9D690927F30B860012176F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D690827F30B860012176F /* Persistence.swift */; };
+		0EF0EF2627FC2BE600ED6D60 /* NewTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0EF2527FC2BE600ED6D60 /* NewTeamView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E07F7EB27F6D6CA00B9D02B /* TeamViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewViewModel.swift; sourceTree = "<group>"; };
 		0E220C1527EF150200F63124 /* Gotq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gotq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E220C1827EF150200F63124 /* Got1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Got1App.swift; sourceTree = "<group>"; };
 		0E220C1C27EF150300F63124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		0E6E8BAE27F2D957006C7E2A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0E6E8BB027F2E6A6006C7E2A /* KingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingsViewViewModel.swift; sourceTree = "<group>"; };
 		0E9D690827F30B860012176F /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		0EF0EF2527FC2BE600ED6D60 /* NewTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				0E5E0C5927F49F7300E47804 /* Main */,
-				0E5E0C5A27F49F9300E47804 /* Kings */,
 				0E5E0C5B27F49FA100E47804 /* Resalts */,
+				0E5E0C5A27F49F9300E47804 /* Kings */,
 				0E5E0C5C27F4A1BE00E47804 /* Teams */,
 			);
 			path = Views;
@@ -172,7 +176,9 @@
 		0E5E0C5C27F4A1BE00E47804 /* Teams */ = {
 			isa = PBXGroup;
 			children = (
+				0E07F7EB27F6D6CA00B9D02B /* TeamViewViewModel.swift */,
 				0E5E0C5D27F4A1E300E47804 /* TeamsView.swift */,
+				0EF0EF2527FC2BE600ED6D60 /* NewTeamView.swift */,
 				0E5E0C5F27F4A91100E47804 /* TeamRowView.swift */,
 			);
 			path = Teams;
@@ -262,12 +268,14 @@
 				0E9D690927F30B860012176F /* Persistence.swift in Sources */,
 				0E4EDA6327F04DC000631F99 /* BackView.swift in Sources */,
 				0E6E8BB127F2E6A6006C7E2A /* KingsViewViewModel.swift in Sources */,
+				0EF0EF2627FC2BE600ED6D60 /* NewTeamView.swift in Sources */,
 				0E5E0C5627F4975900E47804 /* ResaltsViewViewModel.swift in Sources */,
 				0E220C5027EF273A00F63124 /* TFeldsView.swift in Sources */,
 				0E3C7A6F27EF4B9900DFC4E9 /* MainViewViewModel.swift in Sources */,
 				0E220C4B27EF26B400F63124 /* ButtonView.swift in Sources */,
 				0E3C7A7127EF567300DFC4E9 /* Player.swift in Sources */,
 				0E5A8EE227F1D7250031152B /* KingsView.swift in Sources */,
+				0E07F7EC27F6D6CA00B9D02B /* TeamViewViewModel.swift in Sources */,
 				0E220C2527EF150300F63124 /* Got1.xcdatamodeld in Sources */,
 				0E587F2F27F1B3C500814980 /* CustomAlertView.swift in Sources */,
 				0E220C5427EF2D6C00F63124 /* ResaltsView.swift in Sources */,

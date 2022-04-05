@@ -21,6 +21,11 @@ class KingsViewViewModel: ObservableObject {
         CoreDataManager.shered.addKing(player: king, addition: addition)
         updateKings()
     }
+    
+    func deleteKing(king: King) {
+        CoreDataManager.shered.deleteKing(king: king)
+        updateKings()
+    }
 
     func updateKings() {
         CoreDataManager.shered.fetchKings()

@@ -21,11 +21,18 @@ struct KingsView: View {
                 VStack {
                     ScrollView {
                         ForEach(viewModel.kings, id: \.self) { king in
-                            KingRowView(king: king).padding()
+                            KingRowView(king: king,
+                                        deleteAction: {
+                                withAnimation {
+                                    viewModel.deleteKing(king: king)
+                                }
+                                
+                                
+                            })
+                                .padding()
                         }
                     }
                 }
-                .opacity(viewModel.isShowNewKingCard ? 0.3 : 1)
                 .animation(.default, value: viewModel.isShowNewKingCard)
                 
                 VStack {
@@ -46,6 +53,19 @@ struct KingsView: View {
                 }
             }
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Save") {
+                        viewModel.addKing()
+                        viewModel.king.house = "house"
+                        viewModel.king.name = ""
+                        viewModel.addition = "addition"
+                        viewModel.isShowNewKingCard.toggle()
+                        UIApplication.shared.endEditing()
+                    }
+                }
+            }
         }
         
     }
@@ -62,11 +82,12 @@ extension KingsView {
     private var NewKingCard: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .frame(width: width / 1.5, height: height / 5)
+                .frame(width: width - 40, height: height / 5)
                 .foregroundColor(.black)
+                .shadow(color: .white.opacity(0.5), radius: 5, x: 0, y: 0)
             RoundedRectangle(cornerRadius: 20)
                 .stroke()
-                .frame(width: width / 1.5, height: height / 5)
+                .frame(width: width - 40, height: height / 5)
             
         }
         .overlay(
@@ -85,7 +106,7 @@ extension KingsView {
                 }.frame(width: width / 2.5, height: height / 20)
                 
                 
-                HStack(spacing: 15) {
+                HStack(spacing: 20) {
                     Menu(viewModel.king.house) {
                         ForEach(viewModel.houses, id: \.self) { house in
                             Button(action: {viewModel.king.house = house}) {
@@ -93,7 +114,7 @@ extension KingsView {
                             }
                         }
                     }
-                    
+                    .padding(.horizontal)
                     Menu(viewModel.addition) {
                         ForEach(viewModel.additions, id: \.self) { addition in
                             Button(action: {viewModel.addition = addition}) {
@@ -105,7 +126,15 @@ extension KingsView {
                 
                 HStack {
                     Spacer()
-                    Button(action: {viewModel.isShowNewKingCard.toggle()}) {
+                    Button(action: {
+                        viewModel.addKing()
+                        viewModel.king.house = "house"
+                        viewModel.king.name = ""
+                        viewModel.addition = "addition"
+                        viewModel.isShowNewKingCard.toggle()
+                        UIApplication.shared.endEditing()
+                        
+                    }) {
                         Text("Save")
                             .font(.system(size: height / 40))
                     }
@@ -114,8 +143,8 @@ extension KingsView {
             }
                 .padding()
         )
-        .offset(x: viewModel.isShowNewKingCard ? 0 : -height, y: 0)
-        .rotationEffect(Angle(degrees: viewModel.isShowNewKingCard ? 0 : 270))
+        .offset(x: 0, y: viewModel.isShowNewKingCard ? 0 : height)
+        //.rotationEffect(Angle(degrees: viewModel.isShowNewKingCard ? 0 : 270))
         .animation(.spring(), value: viewModel.isShowNewKingCard)
     }
 }
@@ -125,6 +154,12 @@ struct KingRowView: View {
     let king: King
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
+    let deleteAction: () ->Void
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd, YYY"
+        return dateFormatter.string(from: king.date ?? Date())
+    }
     var body: some View {
         ZStack {
             Rectangle()
@@ -139,14 +174,16 @@ struct KingRowView: View {
         .overlay(
             HStack {
                 VStack(alignment: .leading) {
-                    Text("\(king.name ?? "") \(king.house ?? "")")
-                        .bold()
-                        .font(.system(size: height / 35))
+                    HStack {
+                        Text(king.name ?? "")
+                            .bold()
+                        Text(king.house ?? "")
+                    }
+                    .font(.system(size: height / 35))
+                    
                     Text(king.addition ?? "")
-                        .bold()
                         .font(.system(size: height / 40))
-                    Text("\(king.date ?? Date())")
-                        .bold()
+                    Text(formattedDate)
                         .font(.system(size: height / 45))
                         .foregroundColor(.gray)
                     
@@ -155,7 +192,7 @@ struct KingRowView: View {
                 Spacer()
                 VStack {
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Button(action: {deleteAction()}) {
                        Image(systemName: "trash.fill")
                             .foregroundColor(.red)
                             .opacity(0.7)

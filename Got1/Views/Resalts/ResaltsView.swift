@@ -8,46 +8,27 @@
 import SwiftUI
 
 struct ResaltsView: View {
-    @StateObject var viewModel: ResaltsViewViewModel
-    init (resalt: Resalt) {
-        _viewModel = StateObject(
-            wrappedValue: ResaltsViewViewModel(resalt: resalt)
-        )
-    }
+    let resalt: Resalt
     
     var body: some View {
         NavigationView {
             ZStack {
-                Back(title: viewModel.resalt.addition)
+                Back(title: resalt.addition)
                 ScrollView {
-                    ForEach(viewModel.resalt.players, id: \.self) { player in
+                    ForEach(resalt.players, id: \.self) { player in
                         HouseRow(player: player).padding()
-                            .onTapGesture {
-                                viewModel.king = player
-                                viewModel.isShowKingAlert.toggle()
-                            }
                     }
                 }
-                .opacity(viewModel.isShowKingAlert ? 0.3 : 1)
-                .animation(.default, value: viewModel.isShowKingAlert)
-                
-                SaveKingAlert(king: viewModel.king,
-                              additon: viewModel.resalt.addition,
-                              saveAction: {
-                    viewModel.saveKing()
-                    
-                },
-                              showKing: $viewModel.isShowKingAlert)
             }
-            .navigationTitle(viewModel.resalt.addition)
+            .navigationTitle(resalt.addition)
         }
     }
-    
 }
 
 struct ResaltsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResaltsView(resalt: Resalt(players: [Player(name: "", house: "")], addition: "") )
+        ResaltsView(resalt: Resalt(players: [Player(name: "sdfg", house: "Barateon")],
+                                   addition: "Mother of Dragons"))
             .preferredColorScheme(.dark)
     }
 }
@@ -97,57 +78,6 @@ struct HouseRow: View {
     }
 }
 
-struct SaveKingAlert: View {
-    let king: Player
-    let additon: String
-    let saveAction: () -> Void
-    @Binding var showKing: Bool
-    var formattedDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, YYY"
-        return dateFormatter.string(from: Date())
-    }
-    private let width = UIScreen.main.bounds.width
-    private let height = UIScreen.main.bounds.height
-    var body: some View {
-        RoundedRectangle(cornerRadius: 20)
-            .frame(width: width / 2, height: height / 4)
-            .foregroundColor(.black)
-            .overlay(
-                VStack {
-                    Text("Save king?").bold()
-                        .padding()
-                    VStack(alignment: .leading) {
-                        Text(king.name).bold()
-                        Text(king.house)
-                        Text(additon)
-                        Text(formattedDate)
-                        HStack {
-                            Button(action: {showKing.toggle()}) {
-                                Text("Cancel")
-                                    .foregroundColor(.red)
-                                    .bold()
-                                    .padding()
-                            }
-                            Button(action: {
-                                saveAction()
-                                showKing.toggle()
-                                
-                            }) {
-                                Text("Save")
-                                    .bold()
-                                    .padding()
-                            }
-                        }
-                    }
-                }
-            )
-            .shadow(color: .black, radius: 10, x: 0, y: 0)
-            .offset(x: 0, y:  -height / 4)
-            .opacity(showKing ? 1 : 0)
-            .animation(.default, value: showKing)
-    }
-}
 
 
 

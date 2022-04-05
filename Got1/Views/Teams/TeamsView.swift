@@ -10,23 +10,22 @@ import SwiftUI
 struct TeamsView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
-    @State private var isShowAlert = false
+    @StateObject var vm = TeamViewViewModel()
     var body: some View {
         NavigationView {
             ZStack {
                 BackView()
-                
                 VStack {
                     ScrollView {
-                        ForEach(0..<5) { _ in
-                            TeamRowView().padding()
+                        ForEach(vm.teams, id: \.self) { team in
+                           TeamRowView(team: team, vm: vm)
+                                .padding()
                         }
                     }
                 }
-                
             }
             .navigationTitle("Teams")
-            .toolbar { Button(action: {isShowAlert.toggle()}) {
+            .toolbar { Button(action: {vm.showNewTeamView()}) {
                 ZStack {
                     Circle()
                         .frame(width: width / 9, height: width / 9)
@@ -35,8 +34,13 @@ struct TeamsView: View {
                         .foregroundColor(.white)
                 }
             }
+                
+            .sheet(isPresented: $vm.isShowNewTeamView) {
+                NewTeamView(vm: vm)
+            }
             }
         }
+        
         .preferredColorScheme(.dark)
     }
 }
@@ -44,5 +48,7 @@ struct TeamsView: View {
 struct TeamsView_Previews: PreviewProvider {
     static var previews: some View {
         TeamsView()
+            .preferredColorScheme(.dark)
     }
 }
+

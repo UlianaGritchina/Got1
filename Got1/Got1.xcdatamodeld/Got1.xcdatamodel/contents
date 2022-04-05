@@ -6,7 +6,21 @@
         <attribute name="house" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="class">
+        <attribute name="addition" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name1" optional="YES" attributeType="String"/>
+        <attribute name="name2" optional="YES" attributeType="String"/>
+        <attribute name="name3" optional="YES" attributeType="String"/>
+        <attribute name="name4" optional="YES" attributeType="String"/>
+        <attribute name="name5" optional="YES" attributeType="String"/>
+        <attribute name="name6" optional="YES" attributeType="String"/>
+        <attribute name="name7" optional="YES" attributeType="String"/>
+        <attribute name="name8" optional="YES" attributeType="String"/>
+        <attribute name="teamName" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="King" positionX="-63" positionY="-9" width="128" height="89"/>
+        <element name="Team" positionX="-27" positionY="54" width="128" height="194"/>
     </elements>
 </model>
