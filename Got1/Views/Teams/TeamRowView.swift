@@ -62,15 +62,6 @@ struct TeamRowView: View {
                     }
                     Spacer()
                     Button(action: {
-                        let players = [team.name1, team.name2,team.name3,  team.name4, team.name5, team.name6, team.name7,team.name8]
-                        let addition = vm.addition
-                        
-                        var houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell"]
-                        
-                        
-                        
-                        
-                        vm.isShowResultsView.toggle()
                         
                     }) {
                         Text("Play")

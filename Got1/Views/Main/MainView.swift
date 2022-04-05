@@ -19,7 +19,7 @@ struct MainView: View {
                     PickerView(selection: $viewModel.addition)
                         .padding()
                     ButtonView(title: "Start", action: {
-                        viewModel.getResalts()
+                        viewModel.getResult()
                         viewModel.togleShowResaltsView()
                     })
                         .padding()

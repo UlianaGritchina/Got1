@@ -27,6 +27,7 @@
 		0E5E0C5827F49A3800E47804 /* Resalt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E0C5727F49A3800E47804 /* Resalt.swift */; };
 		0E5E0C5E27F4A1E300E47804 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E0C5D27F4A1E300E47804 /* TeamsView.swift */; };
 		0E5E0C6027F4A91100E47804 /* TeamRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E0C5F27F4A91100E47804 /* TeamRowView.swift */; };
+		0E64452D27FC9C0A005603B1 /* GotResultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64452C27FC9C0A005603B1 /* GotResultsManager.swift */; };
 		0E6E8BAF27F2D957006C7E2A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8BAE27F2D957006C7E2A /* CoreDataManager.swift */; };
 		0E6E8BB127F2E6A6006C7E2A /* KingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8BB027F2E6A6006C7E2A /* KingsViewViewModel.swift */; };
 		0E9D690927F30B860012176F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D690827F30B860012176F /* Persistence.swift */; };
@@ -55,6 +56,7 @@
 		0E5E0C5727F49A3800E47804 /* Resalt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resalt.swift; sourceTree = "<group>"; };
 		0E5E0C5D27F4A1E300E47804 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
 		0E5E0C5F27F4A91100E47804 /* TeamRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRowView.swift; sourceTree = "<group>"; };
+		0E64452C27FC9C0A005603B1 /* GotResultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotResultsManager.swift; sourceTree = "<group>"; };
 		0E6E8BAE27F2D957006C7E2A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0E6E8BB027F2E6A6006C7E2A /* KingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingsViewViewModel.swift; sourceTree = "<group>"; };
 		0E9D690827F30B860012176F /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				0E5E0C5D27F4A1E300E47804 /* TeamsView.swift */,
 				0EF0EF2527FC2BE600ED6D60 /* NewTeamView.swift */,
 				0E5E0C5F27F4A91100E47804 /* TeamRowView.swift */,
+				0E64452C27FC9C0A005603B1 /* GotResultsManager.swift */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				0E9D690927F30B860012176F /* Persistence.swift in Sources */,
 				0E4EDA6327F04DC000631F99 /* BackView.swift in Sources */,
 				0E6E8BB127F2E6A6006C7E2A /* KingsViewViewModel.swift in Sources */,
+				0E64452D27FC9C0A005603B1 /* GotResultsManager.swift in Sources */,
 				0EF0EF2627FC2BE600ED6D60 /* NewTeamView.swift in Sources */,
 				0E5E0C5627F4975900E47804 /* ResaltsViewViewModel.swift in Sources */,
 				0E220C5027EF273A00F63124 /* TFeldsView.swift in Sources */,
