@@ -10,7 +10,7 @@ import SwiftUI
 struct TeamsView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
-    @StateObject var vm = TeamViewViewModel()
+    @StateObject var vm = TeamsViewViewModel()
     var body: some View {
         NavigationView {
             ZStack {
@@ -18,7 +18,7 @@ struct TeamsView: View {
                 VStack {
                     ScrollView {
                         ForEach(vm.teams, id: \.self) { team in
-                           TeamRowView(team: team, vm: vm)
+                           TeamRowView(team: team, teamViewModel: vm)
                                 .padding()
                         }
                     }

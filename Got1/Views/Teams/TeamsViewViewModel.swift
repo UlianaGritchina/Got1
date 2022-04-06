@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TeamViewViewModel: ObservableObject {
+class TeamsViewViewModel: ObservableObject {
     
     @Published var teams: [Team] = CoreDataManager.shered.savedTeams
     @Published var teamName = ""

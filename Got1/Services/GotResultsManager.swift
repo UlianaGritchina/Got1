@@ -10,9 +10,9 @@ import Foundation
 class GotResultsManager {
     
     let playersNames: [String]
-    let addition: Additions
+    let addition: String
     
-    init(playersNames: [String], addition: Additions) {
+    init(playersNames: [String], addition: String) {
         self.playersNames = playersNames
         self.addition = addition
     }
@@ -27,14 +27,14 @@ class GotResultsManager {
         getPlayersForGame()
         
         switch addition {
-        case .base:
+        case "Base":
             houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell"]
             if (playersForGame.count > 2) && (playersForGame.count < 7) {
                makeResultsArray()
             }
-            result = Resalt(players: resultPlayers, addition: addition.rawValue)
+            result = Resalt(players: resultPlayers, addition: addition)
             
-        case .motherOfDragons:
+        case "Mother of Dragons":
             houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell","Arryn"]
             houses.shuffle()
             if (playersForGame.count > 2) {
@@ -47,22 +47,23 @@ class GotResultsManager {
                     resultPlayers = resultPlayers.reversed()
                 } else {
                     makeResultsArray()
-                    result = Resalt(players: resultPlayers, addition: addition.rawValue)
+                    result = Resalt(players: resultPlayers, addition: addition)
                 }
-                result = Resalt(players: resultPlayers, addition: addition.rawValue)
+                result = Resalt(players: resultPlayers, addition: addition)
             }
             
-        case .feastOfRavens:
+        case "Feast of Ravens":
             houses = ["Arryn","Stark","Lannister","Barateon"]
             if playersForGame.count == 4 {
                 makeResultsArray()
-                result = Resalt(players: resultPlayers, addition: addition.rawValue)
+                result = Resalt(players: resultPlayers, addition: addition)
             }
-        case .danceWithDragons:
+            
+        default:
             houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell"]
             if playersForGame.count == 6 {
                 makeResultsArray()
-                result = Resalt(players: resultPlayers, addition: addition.rawValue)
+                result = Resalt(players: resultPlayers, addition: addition)
             }
         }
     }

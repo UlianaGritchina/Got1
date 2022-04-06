@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewTeamView: View {
-    @ObservedObject var vm: TeamViewViewModel
+    @ObservedObject var vm: TeamsViewViewModel
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     @State private var addition: Additions = .base
@@ -94,6 +94,6 @@ struct NewTeamView: View {
 
 struct NewTeamView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTeamView(vm: TeamViewViewModel())
+        NewTeamView(vm: TeamsViewViewModel())
     }
 }

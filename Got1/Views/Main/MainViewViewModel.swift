@@ -25,10 +25,10 @@ class MainViewViewModel: ObservableObject {
     @Published var addition: Additions = .base
     @Published var resalt: Resalt = Resalt(players: [], addition: "")
 
-    private var gotManager = GotResultsManager(playersNames: [], addition: .base)
+    private var gotManager = GotResultsManager(playersNames: [], addition: "")
     
     func getResult() {
-        gotManager = GotResultsManager(playersNames: players, addition: addition)
+        gotManager = GotResultsManager(playersNames: players, addition: addition.rawValue)
         gotManager.getResult()
         resalt = gotManager.result
     }
@@ -38,7 +38,11 @@ class MainViewViewModel: ObservableObject {
     }
     
     func togleShowResaltsView() {
-        showResaltsView.toggle()
+        if !resalt.players.isEmpty {
+            showResaltsView.toggle()
+        } else {
+            showAlert.toggle()
+        }
     }
     
     func chuseAdditions(addition: Additions) {

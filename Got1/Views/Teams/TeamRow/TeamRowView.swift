@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TeamRowView: View {
     let team: Team
-    @StateObject var vm: TeamViewViewModel
+    @StateObject var teamViewModel: TeamsViewViewModel
+    @StateObject var teamRowViewModel = TeamRowViewViewModel()
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     var body: some View {
@@ -52,7 +53,7 @@ struct TeamRowView: View {
                 HStack {
                     Button(action: {
                         withAnimation {
-                            vm.deleteTeam(team: team)
+                            teamViewModel.deleteTeam(team: team)
                         }
                         
                     }) {
@@ -62,6 +63,8 @@ struct TeamRowView: View {
                     }
                     Spacer()
                     Button(action: {
+                        teamRowViewModel.getRsult(players: [team.name1 ?? "", team.name2 ?? "", team.name3 ?? "", team.name4 ?? "", team.name5 ?? "", team.name6 ?? "" ,team.name7 ?? "", team.name8 ?? ""], addition: team.addition ?? "")
+                        teamRowViewModel.isShowResultsView.toggle()
                         
                     }) {
                         Text("Play")
@@ -72,11 +75,14 @@ struct TeamRowView: View {
                 }
             }.padding()
         )
+        .sheet(isPresented: $teamRowViewModel.isShowResultsView) {
+            ResaltsView(resalt: teamRowViewModel.result)
+        }
     }
 }
 
 struct TeamRowView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamRowView(team: Team(), vm: TeamViewViewModel())
+        TeamRowView(team: Team(), teamViewModel: TeamsViewViewModel())
     }
 }
