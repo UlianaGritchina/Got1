@@ -19,5 +19,5 @@ class TeamRowViewViewModel: ObservableObject {
         gotManager.getResult()
         result = gotManager.result
     }
-    
+
 }

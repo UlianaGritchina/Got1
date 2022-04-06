@@ -14,11 +14,11 @@ struct TeamsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                BackView()
+                BackView().opacity(0.6)
                 VStack {
                     ScrollView {
                         ForEach(vm.teams, id: \.self) { team in
-                           TeamRowView(team: team, teamViewModel: vm)
+                            TeamRowView(team: team, teamViewModel: vm)
                                 .padding()
                         }
                     }
@@ -26,13 +26,8 @@ struct TeamsView: View {
             }
             .navigationTitle("Teams")
             .toolbar { Button(action: {vm.showNewTeamView()}) {
-                ZStack {
-                    Circle()
-                        .frame(width: width / 9, height: width / 9)
-                        .opacity(0.5)
-                    Image(systemName: "plus.diamond.fill")
-                        .foregroundColor(.white)
-                }
+                Image(systemName: "plus.square.fill")
+                    .symbolRenderingMode(.multicolor)    
             }
                 
             .sheet(isPresented: $vm.isShowNewTeamView) {

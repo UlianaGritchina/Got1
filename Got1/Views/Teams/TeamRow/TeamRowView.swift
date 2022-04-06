@@ -14,29 +14,14 @@ struct TeamRowView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: width - 40, height: height / 4)
-                .foregroundColor(.black)
-                .opacity(0.4)
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: width - 40, height: height / 4)
-                .background(.ultraThinMaterial)
-                .opacity(0.2)
-                .cornerRadius(20)
-            LinearGradient(colors: [.white,.gray], startPoint: .top, endPoint: .bottom)
-                .mask(RoundedRectangle(cornerRadius: 20)
-                        .stroke())
-                .frame(width: width - 40, height: height / 4)
-        }
-        .overlay(
-            
-            VStack {
-                
+        
+        GlassRectangleView(width: width - 40, height: height / 4)
+            .overlay(VStack {
                 Text(team.teamName ?? "")
                     .bold()
                     .font(.system(size: height / 30))
-                    .foregroundColor(.green.opacity(0.7))
+                    .foregroundColor(Color("Tirell"))
+                
                 Text(team.addition ?? "")
                     .font(.system(size: height / 40))
                 
@@ -69,14 +54,14 @@ struct TeamRowView: View {
                     }) {
                         Text("Play")
                             .bold()
-                            .font(.system(size: height / 35))  
+                            .font(.system(size: height / 35))
                     }
                 }
             }.padding()
-        )
-        .sheet(isPresented: $teamRowViewModel.isShowResultsView) {
-            ResaltsView(resalt: teamRowViewModel.result)
-        }
+            )
+            .sheet(isPresented: $teamRowViewModel.isShowResultsView) {
+                ResaltsView(resalt: teamRowViewModel.result)
+            }
     }
 }
 

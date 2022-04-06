@@ -15,79 +15,59 @@ struct NewTeamView: View {
     var body: some View {
         
         NavigationView {
+            
             ScrollView {
-            ZStack {
-                
-                BackView().opacity(0.5)
-                 
-           
-                VStack(alignment: .center) {
-                    TextField("Team name", text: $vm.teamName)
-                        .font(.system(size: height / 25))
-                        .frame(width: width - 40, height: 60)
-                        .multilineTextAlignment(.center)
-                        .padding(.top, height / 7)
+                ZStack {
+                    Color(.black)
                     
-                    HStack {
-                      
-                            VStack {
-                                ForEach(1..<5, id: \.self) { index in
-                                    TextField("Player \(index)", text: $vm.players[index - 1])
-                                        .font(.system(size: height / 30))
-                                        .frame(width: width / 2.2, height: 60)
-                                        .multilineTextAlignment(.center)
-                                }
-                            }
+                    BackView().opacity(0.6)
+                    
+                    VStack(alignment: .center) {
+                        TextField("Team name", text: $vm.teamName)
+                            .font(.system(size: height / 25))
+                            .frame(width: width - 40, height: 60)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, height / 7)
                         
+                        TFeldsView(players: $vm.players)
+                        PickerView(selection: $addition)
                         
-                        VStack {
-                            ForEach(5..<9, id: \.self) { index in
-                                TextField("Player \(index)", text: $vm.players[index - 1])
-                                    .font(.system(size: height / 30))
-                                    .frame(width: width / 2.2, height: 60)
-                                    .multilineTextAlignment(.center)
-                            }
                             
+                        Button(action: {
+                            vm.showNewTeamView()
+                            vm.addition = addition.rawValue
+                            vm.saveTeam()
+                            vm.clearData()
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke()
+                                    .frame(width: width / 2, height: 60)
+                                Text("Save")
+                                    .bold()
+                                    .font(.system(size: height / 40))
+                            }
                         }
+                        .padding(.top, height / 8)
+                        Text("d")  .padding(.top, height / 8)
                     }
-                    
-                
-                    PickerView(selection: $addition)
-                    
-                    Spacer()
-                    Button(action: {
-                        vm.addition = addition.rawValue
-                        vm.saveTeam()
-                        vm.showNewTeamView()
-                        
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke()
-                                .frame(width: width - 40, height: 60)
-                            Text("Save")
-                                .bold()
-                                .font(.system(size: height / 40))
-                        }
-                    }.padding(.top, height / 25)
-                        .padding()
-                        .ignoresSafeArea()
                 }
-                } .ignoresSafeArea()
-            }
-            .ignoresSafeArea()
-            .preferredColorScheme(.dark)
+                
+                
+            }.ignoresSafeArea()
+                .preferredColorScheme(.dark)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {UIApplication.shared.endEditing()}
+                    }
+                }
                 .navigationTitle("New Team")
                 .toolbar { Button(action: {vm.showNewTeamView()}) {
-                    ZStack {
-                        Text("Cancel")
-                            .foregroundColor(.red)
-                            .opacity(0.8)
-                    }
+                    Image(systemName: "minus.square.fill")
+                        .foregroundColor(.red)
                 }
                 }
-            
-            
         }
     }
 }

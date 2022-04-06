@@ -35,4 +35,10 @@ class TeamsViewViewModel: ObservableObject {
         teams = CoreDataManager.shered.savedTeams
     }
     
+    func clearData() {
+        teamName = ""
+        addition = "Base"
+        players = ["","","","","","","",""]
+    }
+    
 }
