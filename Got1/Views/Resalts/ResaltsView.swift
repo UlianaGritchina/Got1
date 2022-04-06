@@ -38,10 +38,9 @@ struct Back: View {
     private let width = UIScreen.main.bounds.width
     private let height = UIScreen.main.bounds.height
     var body: some View {
-        Circle()
-            .frame(width: height / 2, height: height / 2)
-            .foregroundColor(Color(title))
-            .blur(radius: width / 2)
+        RadialGradient(colors: [Color(title), .black], center: .center, startRadius: 20, endRadius: width * 1.3)
+            .ignoresSafeArea()
+            .opacity(0.8)
     }
 }
 

@@ -11,24 +11,34 @@ struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
     var body: some View {
         NavigationView {
+            ScrollView {
             ZStack {
                 BackView()
+                    .opacity(0.6)
+                    
                 
-                ScrollView {
-                    TFRectangleView(players: $viewModel.players).padding()
-                    PickerView(selection: $viewModel.addition)
-                        .padding()
-                    ButtonView(title: "Start", action: {
-                        viewModel.getResult()
-                        viewModel.togleShowResaltsView()
-                    })
-                        .padding()
+                VStack {
+                    
+                    TFRectangleView(players: $viewModel.players).padding(.top, UIScreen.main.bounds.height / 6)
+                    VStack(spacing: UIScreen.main.bounds.height / 9) {
+                        PickerView(selection: $viewModel.addition)
+                        
+                        ButtonView(title: "Start", action: {
+                            viewModel.getResult()
+                            viewModel.togleShowResaltsView()
+                        })
+                    }
+                    
+                    
                 }
+            
                 
                 CustomAlertView(addition: viewModel.addition,
                                 show: $viewModel.showAlert)
                 
             }
+            }
+            .ignoresSafeArea()
             .navigationTitle("Players")
             .preferredColorScheme(.dark)
             .toolbar {

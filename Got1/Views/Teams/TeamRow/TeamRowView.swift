@@ -69,8 +69,7 @@ struct TeamRowView: View {
                     }) {
                         Text("Play")
                             .bold()
-                            .font(.system(size: height / 35))
-                        
+                            .font(.system(size: height / 35))  
                     }
                 }
             }.padding()
