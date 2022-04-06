@@ -13,18 +13,8 @@ struct TFRectangleView: View {
     let height = UIScreen.main.bounds.height
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.purple.opacity(0.5),.blue, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
-                .mask( RoundedRectangle(cornerRadius: 20)
-                        .stroke(.white, lineWidth: 1)
-                        .frame(width: width - 40, height: height * 0.3)
-                        .opacity(0.8))
-            
-            Rectangle()
-                .background(.ultraThinMaterial)
-                .frame(width: width - 40, height: height * 0.3)
-                .cornerRadius(20)
-                .opacity(0.1)
-                .blur(radius: 1)
+            GlassRectangleView(width: width - 40, height: height * 0.3)
+           
             TFeldsView(players: $players)
         }
     }
@@ -35,3 +25,4 @@ struct TFRectangleView_Previews: PreviewProvider {
         TFRectangleView(players:.constant(["","","","","","","",""]))
     }
 }
+

@@ -11,7 +11,7 @@ class KingsViewViewModel: ObservableObject {
     
     @Published var kings: [King] = CoreDataManager.shered.savedKings
     @Published var king = Player(name: "", house: "house")
-    @Published var addition = "addition"
+    @Published var addition = "Base"
     @Published var isShowNewKingCard = false
     
     let houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell", "Arryn", "Targarien"]
@@ -30,6 +30,11 @@ class KingsViewViewModel: ObservableObject {
     func updateKings() {
         CoreDataManager.shered.fetchKings()
         kings = CoreDataManager.shered.savedKings
+    }
+    
+    func clearData() {
+        king = Player(name: "", house: "house")
+        addition = "Base"
     }
     
 }

@@ -40,7 +40,7 @@ class GotResultsManager {
             if (playersForGame.count > 2) {
                 if playersForGame.count != 3 {
                     playersForGame.shuffle()
-                    let targarien = Player(name: playersNames[0], house: "Targarien")
+                    let targarien = Player(name: playersForGame[0], house: "Targarien")
                     playersForGame.remove(at: 0)
                     makeResultsArray()
                     resultPlayers.append(targarien)

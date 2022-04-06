@@ -12,31 +12,27 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-            ZStack {
-                BackView()
-                    .opacity(0.6)
+                ZStack {
+                    BackView().opacity(0.6)
                     
-                
-                VStack {
-                    
-                    TFRectangleView(players: $viewModel.players).padding(.top, UIScreen.main.bounds.height / 6)
-                    VStack(spacing: UIScreen.main.bounds.height / 9) {
-                        PickerView(selection: $viewModel.addition)
+                    VStack {
+                        TFRectangleView(players: $viewModel.players)
+                            .padding(.top, UIScreen.main.bounds.height / 6)
                         
-                        ButtonView(title: "Start", action: {
-                            viewModel.getResult()
-                            viewModel.togleShowResaltsView()
-                        })
+                        VStack(spacing: UIScreen.main.bounds.height / 9) {
+                            
+                            PickerView(selection: $viewModel.addition)
+                            
+                            ButtonView(title: "Start", action: {
+                                viewModel.getResult()
+                                viewModel.togleShowResaltsView()
+                            })
+                        }
                     }
                     
-                    
+                    CustomAlertView(addition: viewModel.addition,
+                                    show: $viewModel.showAlert)
                 }
-            
-                
-                CustomAlertView(addition: viewModel.addition,
-                                show: $viewModel.showAlert)
-                
-            }
             }
             .ignoresSafeArea()
             .navigationTitle("Players")
