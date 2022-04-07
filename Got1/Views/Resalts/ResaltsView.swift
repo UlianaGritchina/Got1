@@ -27,8 +27,10 @@ struct ResaltsView: View {
 
 struct ResaltsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResaltsView(resalt: Resalt(players: [Player(name: "sdfg", house: "Barateon")],
-                                   addition: "Mother of Dragons"))
+        ResaltsView(resalt: Resalt(
+            players: [Player(name: "sdfg", house: "Barateon")],
+            addition: "Dance with Dragons")
+        )
             .preferredColorScheme(.dark)
     }
 }
@@ -38,7 +40,7 @@ struct Back: View {
     private let width = UIScreen.main.bounds.width
     private let height = UIScreen.main.bounds.height
     var body: some View {
-        RadialGradient(colors: [Color(title), .black], center: .center, startRadius: 20, endRadius: width * 1.3)
+        RadialGradient(colors: [Color(title).opacity(0.5), .black], center: .center, startRadius: 20, endRadius: width * 1.3)
             .ignoresSafeArea()
             .opacity(0.8)
     }
