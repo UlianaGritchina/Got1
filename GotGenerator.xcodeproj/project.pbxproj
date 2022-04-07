@@ -32,6 +32,7 @@
 		0E64452D27FC9C0A005603B1 /* GotResultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64452C27FC9C0A005603B1 /* GotResultsManager.swift */; };
 		0E6E8BAF27F2D957006C7E2A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8BAE27F2D957006C7E2A /* CoreDataManager.swift */; };
 		0E6E8BB127F2E6A6006C7E2A /* KingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8BB027F2E6A6006C7E2A /* KingsViewViewModel.swift */; };
+		0E783F6F27FEB38E007745F4 /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E783F6E27FEB38E007745F4 /* SupportView.swift */; };
 		0E9D690927F30B860012176F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D690827F30B860012176F /* Persistence.swift */; };
 		0EF0EF2627FC2BE600ED6D60 /* NewTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0EF2527FC2BE600ED6D60 /* NewTeamView.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		0E64452C27FC9C0A005603B1 /* GotResultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotResultsManager.swift; sourceTree = "<group>"; };
 		0E6E8BAE27F2D957006C7E2A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0E6E8BB027F2E6A6006C7E2A /* KingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingsViewViewModel.swift; sourceTree = "<group>"; };
+		0E783F6E27FEB38E007745F4 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		0E9BC47027FD9AFA0091641D /* GotGenerator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GotGenerator-Info.plist"; sourceTree = "<group>"; };
 		0E9D690827F30B860012176F /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0EF0EF2527FC2BE600ED6D60 /* NewTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				0E3C7A6E27EF4B9900DFC4E9 /* MainViewViewModel.swift */,
 				0E220C4727EF153800F63124 /* MainView.swift */,
+				0E783F6E27FEB38E007745F4 /* SupportView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				0E5A8EE227F1D7250031152B /* KingsView.swift in Sources */,
 				0E07F7EC27F6D6CA00B9D02B /* TeamsViewViewModel.swift in Sources */,
 				0E220C2527EF150300F63124 /* Got1.xcdatamodeld in Sources */,
+				0E783F6F27FEB38E007745F4 /* SupportView.swift in Sources */,
 				0E587F2F27F1B3C500814980 /* CustomAlertView.swift in Sources */,
 				0E220C5427EF2D6C00F63124 /* ResaltsView.swift in Sources */,
 				0E220C4E27EF26FE00F63124 /* TFRectangleView.swift in Sources */,
