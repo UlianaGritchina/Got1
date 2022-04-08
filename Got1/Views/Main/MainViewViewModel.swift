@@ -20,7 +20,6 @@ class MainViewViewModel: ObservableObject {
     @Published var players = ["","","","","","","",""]
     @Published var showAdditions = false
     @Published var showResaltsView = false
-    @Published var isShowSupportView = false
     @Published var showAlert = false
     @Published var selectedAddition = "Base"
     @Published var addition: Additions = .base

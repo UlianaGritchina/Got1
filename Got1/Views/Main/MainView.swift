@@ -38,22 +38,12 @@ struct MainView: View {
             .navigationTitle("Players")
             .preferredColorScheme(.dark)
             
-            .toolbar { Button(action: {viewModel.isShowSupportView.toggle()}) {
-                Image(systemName: "dollarsign.circle")
-                    .font(.system(size: 20))
-                    .symbolRenderingMode(.multicolor)
-                    .foregroundColor(.white)
-            }
-            }
             
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button("Done") {UIApplication.shared.endEditing()}
                 }
-            }
-            .sheet(isPresented: $viewModel.isShowSupportView) {
-                SupportView()
             }
             .sheet(isPresented: $viewModel.showResaltsView) {
                 ResaltsView(resalt: viewModel.resalt)

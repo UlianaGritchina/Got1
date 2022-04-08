@@ -14,7 +14,7 @@ struct TeamRowView: View {
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     var body: some View {
-        
+
         GlassRectangleView(width: width - 40, height: height / 4)
             .overlay(VStack {
                 Text(team.teamName ?? "")

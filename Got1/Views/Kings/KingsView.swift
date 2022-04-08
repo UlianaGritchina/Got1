@@ -53,7 +53,15 @@ struct KingsView_Previews: PreviewProvider {
 extension KingsView {
     private var NewKingCard: some View {
         RoundedRectangle(cornerRadius: 20)
-            .fill(Color.black)
+            .fill(LinearGradient(colors: [Color("DarkBlue"),.black], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .frame(width: width - 20, height: height / 2.5)
+            .overlay(
+                LinearGradient(colors: [.green,.yellow,.purple,.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .mask(RoundedRectangle(cornerRadius: 20)
+                            .stroke())
+                    .frame(width: width - 20, height: height / 2.5)
+            )
+
             .overlay(VStack(spacing: 10) {
                 Text("New King")
                     .bold()
@@ -61,13 +69,9 @@ extension KingsView {
                     .font(.system(size: height / 30))
                 
                 
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke()
-                    .frame(width: width - 40, height: height / 16)
-                    .opacity(0.5)
-                    .overlay(TextField("Name", text: $viewModel.king.name)
+               TextField("Name", text: $viewModel.king.name)
                                 .multilineTextAlignment(.center)
-                                .font(.system(size: height / 35)))
+                                .font(.system(size: height / 35))
                 
                 
                 Menu(viewModel.king.house) {
@@ -104,11 +108,11 @@ extension KingsView {
                                 .font(.system(size: height / 40))
                         )
                 }
-                .frame(width: width - 40, height: height / 16)
+                .frame(width: width / 2, height: height / 20)
                 
             }.padding()
             )
-            .shadow(color: .blue.opacity(0.3), radius: 5, x: 0, y: 0)
+            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 10)
             .frame(width: width - 20, height: height / 2.5)
             .rotationEffect(Angle(degrees: viewModel.isShowNewKingCard ? 0 : 180))
             .offset(x: 0, y: viewModel.isShowNewKingCard ? 0 : -height)
