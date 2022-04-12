@@ -34,7 +34,7 @@ struct TeamsView: View {
                 NewTeamView(vm: vm)
             }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
         
         .preferredColorScheme(.dark)
     }

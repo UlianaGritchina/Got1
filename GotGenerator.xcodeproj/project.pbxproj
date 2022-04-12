@@ -101,16 +101,11 @@
 		0E220C1727EF150200F63124 /* Got1 */ = {
 			isa = PBXGroup;
 			children = (
-				0E52CA1427FED90B00363FE0 /* Launch Screen.storyboard */,
-				0E220C2327EF150300F63124 /* Got1.xcdatamodeld */,
-				0E220C1C27EF150300F63124 /* Assets.xcassets */,
-				0E220C1827EF150200F63124 /* Got1App.swift */,
-				0E9D690827F30B860012176F /* Persistence.swift */,
+				0E3A7D0C28058CC3009EAE13 /* More */,
 				0E3C7A7227EF569500DFC4E9 /* Models */,
 				0E220C4927EF154400F63124 /* Views */,
 				0E6E8BAD27F2D938006C7E2A /* Services */,
 				0E220C4C27EF26DA00F63124 /* Components */,
-				0E220C1E27EF150300F63124 /* Preview Content */,
 			);
 			path = Got1;
 			sourceTree = "<group>";
@@ -147,6 +142,19 @@
 			);
 			name = Components;
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0E3A7D0C28058CC3009EAE13 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				0E220C1E27EF150300F63124 /* Preview Content */,
+				0E52CA1427FED90B00363FE0 /* Launch Screen.storyboard */,
+				0E220C2327EF150300F63124 /* Got1.xcdatamodeld */,
+				0E220C1C27EF150300F63124 /* Assets.xcassets */,
+				0E220C1827EF150200F63124 /* Got1App.swift */,
+				0E9D690827F30B860012176F /* Persistence.swift */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 		0E3C7A7227EF569500DFC4E9 /* Models */ = {
@@ -440,7 +448,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Got1/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Got1/More/Preview Content\"";
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -463,7 +471,7 @@
 				PRODUCT_NAME = "Got: Generator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -474,7 +482,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Got1/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Got1/More/Preview Content\"";
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -497,7 +505,7 @@
 				PRODUCT_NAME = "Got: Generator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

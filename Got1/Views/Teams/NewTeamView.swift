@@ -11,6 +11,9 @@ struct NewTeamView: View {
     @ObservedObject var vm: TeamsViewViewModel
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
+    @State private var gotManager = GotResultsManager(playersNames: [],
+                                                      addition: "")
+    @State private var isShowAlert = false
     @State private var addition: Additions = .base
     var body: some View {
         
@@ -32,12 +35,22 @@ struct NewTeamView: View {
                         TFeldsView(players: $vm.players)
                         PickerView(selection: $addition)
                         
-                            
+                        
                         Button(action: {
-                            vm.showNewTeamView()
                             vm.addition = addition.rawValue
-                            vm.saveTeam()
-                            vm.clearData()
+                            
+                            
+                            
+                            gotManager = GotResultsManager(playersNames: vm.players,
+                                                           addition: vm.addition)
+                            gotManager.getResult()
+                            if !gotManager.result.players.isEmpty {
+                                isShowAlert = false
+                                vm.saveTeam()
+                                vm.isShowNewTeamView = false
+                            } else {
+                                isShowAlert = true
+                            } 
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
@@ -51,6 +64,34 @@ struct NewTeamView: View {
                         .padding(.top, height / 8)
                         Text("d")  .padding(.top, height / 8)
                     }
+                    
+                    VStack {
+                        Rectangle()
+                            .frame(width: width - 80, height: height / 5)
+                            .opacity(0)
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(20)
+                            .overlay(
+                                
+                                
+                                VStack {
+                                    Text("Wrong team")
+                                        .bold()
+                                        .font(.system(size: height / 30))
+                                    Text("The team does not comply with the rules of the game \(vm.addition)")
+                                    Spacer()
+                                    Button(action: {isShowAlert.toggle()}) {
+                                        Text("OK")
+                                            .bold()
+                                            .font(.system(size: height / 40))
+                                    }
+                                }.padding()
+                            )
+                            .opacity(isShowAlert ? 1 : 0)
+                            .animation(.spring(), value: isShowAlert)
+                        Spacer()
+                    }.padding(.top, height / 7)
+                    
                 }
                 
                 

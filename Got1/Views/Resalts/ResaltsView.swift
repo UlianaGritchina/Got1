@@ -21,7 +21,7 @@ struct ResaltsView: View {
                 }
             }
             .navigationTitle(resalt.addition)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -73,8 +73,6 @@ struct HouseRow: View {
                 .stroke(Color("\(player.house)"))
                 .frame(width: width - 80, height: height / 10)
                 .shadow(color: .black, radius: 3, x: 0, y: 0)
-            
-            
         }
     }
 }

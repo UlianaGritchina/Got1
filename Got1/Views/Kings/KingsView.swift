@@ -37,7 +37,7 @@ struct KingsView: View {
                     .foregroundColor(.white)
             }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
 }

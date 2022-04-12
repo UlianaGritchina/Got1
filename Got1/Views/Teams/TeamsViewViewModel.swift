@@ -15,6 +15,7 @@ class TeamsViewViewModel: ObservableObject {
     @Published var addition = "Base"
     @Published var isShowNewTeamView = false
     @Published var isShowResultsView = false
+    @Published var isShowAlertView = false
     
     func showNewTeamView() {
         isShowNewTeamView.toggle()
@@ -23,6 +24,9 @@ class TeamsViewViewModel: ObservableObject {
     func saveTeam() {
         CoreDataManager.shered.addTeam(teamName: teamName, players: players, additeion: addition)
         updateTeams()
+        isShowAlertView = false
+        isShowNewTeamView = false
+        clearData()
     }
     
     func deleteTeam(team: Team) {

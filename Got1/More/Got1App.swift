@@ -10,10 +10,8 @@ import SwiftUI
 @main
 struct Got1App: App {
     let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
-            
             TabView {
                 MainView()
                     .tabItem {
@@ -29,9 +27,6 @@ struct Got1App: App {
                         Label("Teams", systemImage: "person.3.fill")
                     }
             }
-
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

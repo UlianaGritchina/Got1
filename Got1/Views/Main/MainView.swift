@@ -17,7 +17,7 @@ struct MainView: View {
                     
                     VStack {
                         TFRectangleView(players: $viewModel.players)
-                            .padding(.top, UIScreen.main.bounds.height / 6)
+                            .padding(.top, UIScreen.main.bounds.height / 6 + 5)
                         
                         VStack(spacing: UIScreen.main.bounds.height / 9) {
                             
@@ -27,6 +27,7 @@ struct MainView: View {
                                 viewModel.getResult()
                                 viewModel.togleShowResaltsView()
                             })
+                                .padding(.top, -25)
                         }
                     }
                     
@@ -48,7 +49,7 @@ struct MainView: View {
             .sheet(isPresented: $viewModel.showResaltsView) {
                 ResaltsView(resalt: viewModel.resalt)
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

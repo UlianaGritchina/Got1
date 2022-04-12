@@ -18,6 +18,7 @@ class TeamRowViewViewModel: ObservableObject {
         gotManager = GotResultsManager(playersNames: players, addition: addition)
         gotManager.getResult()
         result = gotManager.result
+       
     }
-
+    
 }

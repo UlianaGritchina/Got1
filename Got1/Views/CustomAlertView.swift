@@ -14,6 +14,7 @@ struct CustomAlertView: View {
     private let height = UIScreen.main.bounds.height
     var body: some View {
         Rectangle()
+            .opacity(0)
             .background(.ultraThinMaterial)
             .cornerRadius(20)
             .overlay(
@@ -28,7 +29,6 @@ struct CustomAlertView: View {
                     
                     HStack {
                         Text("You need")
-                            .font(.system(size: height / 45))
                         switch addition {
                         case .base:
                             Text("3...6")
@@ -40,7 +40,7 @@ struct CustomAlertView: View {
                             Text("6")
                         }
                         Text("players")
-                    }
+                    }.font(.system(size: height / 45))
 
                     Spacer()
                     Button("OK") {show.toggle()}
