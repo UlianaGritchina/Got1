@@ -12,7 +12,7 @@ class TeamsViewViewModel: ObservableObject {
     @Published var teams: [Team] = CoreDataManager.shered.savedTeams
     @Published var teamName = ""
     @Published var players = ["","","","","","","",""]
-    @Published var addition = "Base"
+    @Published var addition: Additions = .base
     @Published var isShowNewTeamView = false
     @Published var isShowResultsView = false
     @Published var isShowAlertView = false
@@ -22,7 +22,7 @@ class TeamsViewViewModel: ObservableObject {
     }
     
     func saveTeam() {
-        CoreDataManager.shered.addTeam(teamName: teamName, players: players, additeion: addition)
+        CoreDataManager.shered.addTeam(teamName: teamName, players: players, additeion: addition.rawValue)
         updateTeams()
         isShowAlertView = false
         isShowNewTeamView = false
@@ -41,7 +41,7 @@ class TeamsViewViewModel: ObservableObject {
     
     func clearData() {
         teamName = ""
-        addition = "Base"
+        addition = .base
         players = ["","","","","","","",""]
     }
     

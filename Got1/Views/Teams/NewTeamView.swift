@@ -33,16 +33,14 @@ struct NewTeamView: View {
                             .padding(.top, height / 7)
                         
                         TFeldsView(players: $vm.players)
-                        PickerView(selection: $addition)
+                        AddiotionPickerView(selected: $vm.addition)
                         
                         
                         Button(action: {
-                            vm.addition = addition.rawValue
-                            
-                            
-                            
+                            vm.addition = addition
+
                             gotManager = GotResultsManager(playersNames: vm.players,
-                                                           addition: vm.addition)
+                                                           addition: vm.addition.rawValue)
                             gotManager.getResult()
                             if !gotManager.result.players.isEmpty {
                                 isShowAlert = false
@@ -55,14 +53,14 @@ struct NewTeamView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke()
-                                    .frame(width: width / 2, height: 60)
+                                    .frame(width: width / 1.5, height: height / 16)
                                 Text("Save")
                                     .bold()
                                     .font(.system(size: height / 40))
                             }
                         }
-                        .padding(.top, height / 8)
-                        Text("d")  .padding(.top, height / 8)
+                        .padding(.top, -20)
+                        Text("d").padding(.top, height / 7)
                     }
                     
                     VStack {
@@ -78,7 +76,7 @@ struct NewTeamView: View {
                                     Text("Wrong team")
                                         .bold()
                                         .font(.system(size: height / 30))
-                                    Text("The team does not comply with the rules of the game \(vm.addition)")
+                                    Text("The team does not comply with the rules of the game \(vm.addition.rawValue)")
                                     Spacer()
                                     Button(action: {isShowAlert.toggle()}) {
                                         Text("OK")

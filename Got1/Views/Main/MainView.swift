@@ -14,23 +14,21 @@ struct MainView: View {
             ScrollView {
                 ZStack {
                     BackView().opacity(0.6)
-                    
                     VStack {
                         TFRectangleView(players: $viewModel.players)
-                            .padding(.top, UIScreen.main.bounds.height / 6 + 5)
+                            .padding(.top, UIScreen.main.bounds.height / 6 + 15)
                         
                         VStack(spacing: UIScreen.main.bounds.height / 9) {
                             
-                            PickerView(selection: $viewModel.addition)
+                            AddiotionPickerView(selected: $viewModel.addition).padding()
                             
                             ButtonView(title: "Start", action: {
                                 viewModel.getResult()
                                 viewModel.togleShowResaltsView()
                             })
-                                .padding(.top, -25)
+                            
                         }
                     }
-                    
                     CustomAlertView(addition: viewModel.addition,
                                     show: $viewModel.showAlert)
                 }
@@ -39,18 +37,18 @@ struct MainView: View {
             .navigationTitle("Players")
             .preferredColorScheme(.dark)
             
-            
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button("Done") {UIApplication.shared.endEditing()}
                 }
             }
+            
             .sheet(isPresented: $viewModel.showResaltsView) {
                 ResaltsView(resalt: viewModel.resalt)
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
-        
+            
+        }
     }
 }
 
@@ -61,26 +59,12 @@ struct MainView_Previews: PreviewProvider {
     }
 }
 
-struct PickerView: View {
-    @Binding var selection: Additions
-    var body: some View {
-        Picker("Addition", selection: $selection) {
-            Text("Base")
-                .tag(Additions.base)
-            Text("Mother of Dragons")
-                .tag(Additions.motherOfDragons)
-            Text("Feast of Ravens")
-                .tag(Additions.feastOfRavens)
-            Text("Dance with Dragons")
-                .tag(Additions.danceWithDragons)
-        }
-        .pickerStyle(WheelPickerStyle())
-    }
-}
-
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder),
                    to: nil, from: nil, for: nil)
     }
 }
+
+
+

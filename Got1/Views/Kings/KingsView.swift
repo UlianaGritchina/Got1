@@ -68,7 +68,6 @@ extension KingsView {
                     .padding()
                     .font(.system(size: height / 30))
                 
-                
                TextField("Name", text: $viewModel.king.name)
                                 .multilineTextAlignment(.center)
                                 .font(.system(size: height / 35))
@@ -81,9 +80,7 @@ extension KingsView {
                 }
                 .font(.system(size: height / 35))
                 .padding()
-                
-                
-                
+
                 Menu(viewModel.addition) {
                     ForEach(viewModel.additions, id: \.self) { additon in
                         Button(additon, action: {viewModel.addition = additon})
@@ -94,10 +91,17 @@ extension KingsView {
                 
                 
                 Button(action: {
-                    viewModel.addKing()
-                    viewModel.isShowNewKingCard = false
-                    viewModel.clearData()
-                    UIApplication.shared.endEditing()
+                    if viewModel.king.name != "" {
+                        viewModel.addKing()
+                        viewModel.isShowNewKingCard = false
+                        viewModel.clearData()
+                        UIApplication.shared.endEditing()
+                    } else {
+                        viewModel.isShowNewKingCard = false
+                        viewModel.clearData()
+                        UIApplication.shared.endEditing()
+                    }
+                   
                     
                 }) {
                     RoundedRectangle(cornerRadius: 20)
