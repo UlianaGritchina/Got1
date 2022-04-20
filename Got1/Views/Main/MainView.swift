@@ -29,8 +29,7 @@ struct MainView: View {
                             
                         }
                     }
-                    CustomAlertView(addition: viewModel.addition,
-                                    show: $viewModel.showAlert)
+                    
                 }
             }
             .ignoresSafeArea()
@@ -42,6 +41,10 @@ struct MainView: View {
                     Spacer()
                     Button("Done") {UIApplication.shared.endEditing()}
                 }
+            }
+            
+            .alert("Wrong players count", isPresented: $viewModel.showAlert) {
+                Button("OK", role: .cancel) { }
             }
             
             .sheet(isPresented: $viewModel.showResaltsView) {
