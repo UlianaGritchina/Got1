@@ -13,16 +13,19 @@ class KingsViewViewModel: ObservableObject {
     @Published var king = Player(name: "", house: "house")
     @Published var addition = "Base"
     @Published var isShowNewKingCard = false
+    @Published var count = 0
     
     let houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell", "Arryn", "Targarien"]
     let additions = ["Base","Mother of Dragons","Feast of Ravens","Dance with Dragons"]
     
     func addKing() {
         CoreDataManager.shered.addKing(player: king, addition: addition)
+        //count += 1
         updateKings()
     }
     
     func deleteKing(king: King) {
+        count -= 1
         CoreDataManager.shered.deleteKing(king: king)
         updateKings()
     }

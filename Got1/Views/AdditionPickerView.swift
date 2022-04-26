@@ -30,6 +30,7 @@ struct AddiotionPickerView: View {
 struct AdditionPickerView_Previews: PreviewProvider {
     static var previews: some View {
         AddiotionPickerView(selected: .constant(.base))
+            .preferredColorScheme(.dark)
     }
 }
 
@@ -40,9 +41,18 @@ struct AdditionRectangle: View {
     private let width = UIScreen.main.bounds.width
     private let height = UIScreen.main.bounds.height
     var body: some View {
-        Button(action: {selectet = addition}) {
+        Button(action: {
+            withAnimation {
+                selectet = addition
+            }
+        }) {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width: addition == .danceWithDragons ? width / 2 : width / 2.3, height: height / 20)
+                .frame(
+                    width: addition == .danceWithDragons
+                    ? width / 2
+                    : width / 2.3,
+                    height: height / 20
+                )
                 .opacity(selectet == addition ? 0.3 : 0.3)
                 .foregroundColor(.white)
                 .overlay(
@@ -56,5 +66,6 @@ struct AdditionRectangle: View {
                     })
                 .opacity(selectet == addition ? 1 : 0.5)
         }
+
     }
 }

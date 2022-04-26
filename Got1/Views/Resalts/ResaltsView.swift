@@ -14,7 +14,7 @@ struct ResaltsView: View {
         NavigationView {
             ZStack {
                 Back(title: resalt.addition)
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(resalt.players, id: \.self) { player in
                         HouseRow(player: player).padding()
                     }

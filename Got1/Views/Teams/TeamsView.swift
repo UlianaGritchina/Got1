@@ -30,7 +30,7 @@ struct TeamsView: View {
                     .symbolRenderingMode(.multicolor)    
             }
                 
-            .sheet(isPresented: $vm.isShowNewTeamView) {
+            .fullScreenCover(isPresented: $vm.isShowNewTeamView) {
                 NewTeamView(vm: vm)
             }
             }

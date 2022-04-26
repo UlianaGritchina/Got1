@@ -26,12 +26,8 @@ struct MainView: View {
                                 viewModel.getResult()
                                 viewModel.togleShowResaltsView()
                             })
-                            
-                            
-                            
                         }
                     }
-                    
                 }
             }
             .ignoresSafeArea()
@@ -41,7 +37,7 @@ struct MainView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button("Done") {UIApplication.shared.endEditing()}
+                    Button("Done") { UIApplication.shared.endEditing() }
                 }
             }
             
@@ -54,6 +50,7 @@ struct MainView: View {
             }
             
         }
+        .preferredColorScheme(.dark)
     }
 }
 

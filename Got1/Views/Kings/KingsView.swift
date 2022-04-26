@@ -11,6 +11,7 @@ struct KingsView: View {
     @StateObject var viewModel = KingsViewViewModel()
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,21 +24,25 @@ struct KingsView: View {
                                 withAnimation {
                                     viewModel.deleteKing(king: king)
                                 }
-                            })
-                                .padding()
+                            }).onAppear { viewModel.count += 1 }
+                            .padding()
                         }
                     }
                 }
                 NewKingCard
+                
             }
-            .navigationTitle("Kings")
+            .navigationTitle("Kings: \(viewModel.count)")
+            
             .toolbar { Button(action: {viewModel.isShowNewKingCard.toggle()}) {
                 Image(systemName: viewModel.isShowNewKingCard ? "person.fill.badge.minus" : "person.fill.badge.plus")
                     .symbolRenderingMode(.multicolor)
                     .foregroundColor(.white)
             }
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .preferredColorScheme(.dark)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
 }
@@ -46,75 +51,87 @@ struct KingsView: View {
 struct KingsView_Previews: PreviewProvider {
     static var previews: some View {
         KingsView()
-            .preferredColorScheme(.dark)
+            
     }
 }
 
 extension KingsView {
     private var NewKingCard: some View {
-        RoundedRectangle(cornerRadius: 20)
-            .fill(LinearGradient(colors: [Color("DarkBlue"),.black], startPoint: .topLeading, endPoint: .bottomTrailing))
-            .frame(width: width - 20, height: height / 2.5)
+        Rectangle()
+            .opacity(0)
+            .background(.ultraThinMaterial)
+            .frame(width: width - 20, height: height / 2.7)
+            .cornerRadius(20)
             .overlay(
-                LinearGradient(colors: [.green,.yellow,.purple,.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .mask(RoundedRectangle(cornerRadius: 20)
-                            .stroke())
-                    .frame(width: width - 20, height: height / 2.5)
-            )
-
-            .overlay(VStack(spacing: 10) {
-                Text("New King")
-                    .bold()
-                    .padding()
-                    .font(.system(size: height / 30))
-                
-               TextField("Name", text: $viewModel.king.name)
-                                .multilineTextAlignment(.center)
-                                .font(.system(size: height / 35))
-                
-                
-                Menu(viewModel.king.house) {
-                    ForEach(viewModel.houses, id: \.self) { house in
-                        Button(house, action: {viewModel.king.house = house})
-                    }
-                }
-                .font(.system(size: height / 35))
-                .padding()
-
-                Menu(viewModel.addition) {
-                    ForEach(viewModel.additions, id: \.self) { additon in
-                        Button(additon, action: {viewModel.addition = additon})
-                    }
-                }
-                .font(.system(size: height / 35))
-                .padding()
-                
-                
-                Button(action: {
-                    if viewModel.king.name != "" {
-                        viewModel.addKing()
-                        viewModel.isShowNewKingCard = false
-                        viewModel.clearData()
-                        UIApplication.shared.endEditing()
-                    } else {
-                        viewModel.isShowNewKingCard = false
-                        viewModel.clearData()
-                        UIApplication.shared.endEditing()
-                    }
-                   
+                ZStack {
                     
-                }) {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke()
+                    
+                    
+                    LinearGradient(colors: [.white.opacity(0.5),.gray.opacity(0)],
+                                   startPoint: .topLeading,
+                                   endPoint: .bottomTrailing)
+                    
+                        .mask(RoundedRectangle(cornerRadius: 20).stroke())
+                        .frame(width: width - 20, height: height / 2.7)
                         .overlay(
-                            Text("Save")
-                                .bold()
-                                .font(.system(size: height / 40))
+                            VStack(spacing: height / 140) {
+                                Text("New King")
+                                    .bold()
+                                    .padding()
+                                    .font(.system(size: height / 30))
+                                
+                                TextField("Name", text: $viewModel.king.name)
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(size: height / 35))
+                                
+                                
+                                Menu(viewModel.king.house) {
+                                    ForEach(viewModel.houses, id: \.self) { house in
+                                        Button(house, action: {viewModel.king.house = house})
+                                    }
+                                }
+                                .font(.system(size: height / 35))
+                                .padding()
+                                
+                                Menu(viewModel.addition) {
+                                    ForEach(viewModel.additions, id: \.self) { additon in
+                                        Button(additon, action: {viewModel.addition = additon})
+                                    }
+                                }
+                                .font(.system(size: height / 35))
+                                .padding()
+                                
+                                
+                                Button(action: {
+                                    if viewModel.king.name != "" {
+                                        viewModel.addKing()
+                                        viewModel.isShowNewKingCard = false
+                                        viewModel.clearData()
+                                        UIApplication.shared.endEditing()
+                                    } else {
+                                        viewModel.isShowNewKingCard = false
+                                        viewModel.clearData()
+                                        UIApplication.shared.endEditing()
+                                    }
+                                    
+                                    
+                                }) {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke()
+                                        .overlay(
+                                            Text("Save")
+                                                .bold()
+                                                .font(.system(size: height / 40))
+                                        )
+                                }
+                                .frame(width: width / 2, height: height / 20)
+                                
+                            }.padding()
                         )
+                    
+                 
+                    
                 }
-                .frame(width: width / 2, height: height / 20)
-                
-            }.padding()
             )
             .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 10)
             .frame(width: width - 20, height: height / 2.5)
@@ -126,6 +143,8 @@ extension KingsView {
 
 
 struct KingRowView: View {
+    @State private var showingOptions = false
+    @State private var isShowingGameDetailView = false
     let king: King
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -137,6 +156,7 @@ struct KingRowView: View {
     }
     var body: some View {
         ZStack {
+            
             Rectangle()
                 .frame(width: width - 40, height: height / 7)
                 .background(.ultraThinMaterial)
@@ -149,15 +169,40 @@ struct KingRowView: View {
                         .frame(width: width - 40, height: height / 7))
             
         }
+        .sheet(isPresented: $isShowingGameDetailView, content: {
+            GameDetailsView()
+        })
+        .actionSheet(isPresented: $showingOptions) {
+                       ActionSheet(
+                           title: Text("Select a color"),
+                           buttons: [
+                               .default(Text("Game detail")) {
+                                   isShowingGameDetailView.toggle()
+                               },
+
+                                .default(Text("\(king.name ?? "") info")) {
+                                 
+                               },
+
+                               .destructive(Text("Delete")) {
+                                   deleteAction()
+                               },
+                               
+                                .cancel()
+                           ]
+                       )
+                   }
+        
         .overlay(
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(king.name ?? "")
+                            .font(.system(size: height / 33))
                             .bold()
-                        Text(king.house ?? "")
+                        Text(king.house ?? "").font(.system(size: height / 35))
                     }
-                    .font(.system(size: height / 35))
+                    
                     
                     Spacer()
                     Text(king.addition ?? "")
@@ -168,15 +213,27 @@ struct KingRowView: View {
                         .foregroundColor(.gray)
                 }
                 Spacer()
+                
                 VStack {
                     Spacer()
-                    Button(action: {deleteAction()}) {
-                        Image(systemName: "trash.fill")
-                            .foregroundColor(.red)
-                            .opacity(0.7)
+                    HStack {
+                        Spacer()
+                        Button(action: {showingOptions.toggle()}) {
+                            Rectangle()
+                                .frame(width: width / 4, height: height / 35)
+                                .opacity(0)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(10)
+                                .overlay(Image(systemName: "ellipsis"))
+                        }
+                       
                     }
                     
-                }
+                   
+                }.frame(width: width / 18)
+                    .offset(x: -width / 10)
+              
+            
             }.padding()
         )
     }
