@@ -49,7 +49,10 @@ struct TeamRowView: View {
                         }
                         Spacer()
                         Button(action: {
-                            teamRowViewModel.getRsult(players: [team.name1 ?? "", team.name2 ?? "", team.name3 ?? "", team.name4 ?? "", team.name5 ?? "", team.name6 ?? "" ,team.name7 ?? "", team.name8 ?? ""], addition: team.addition ?? "")
+                            teamRowViewModel.getRsult(players: [team.name1 ?? "", team.name2 ?? "", team.name3 ?? "",
+                                                                team.name4 ?? "", team.name5 ?? "", team.name6 ?? "" ,
+                                                                team.name7 ?? "", team.name8 ?? ""],
+                                                      addition: .base)
                             teamRowViewModel.isShowResultsView.toggle()
                             
                         

@@ -13,14 +13,14 @@ struct ResaltsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Back(title: resalt.addition)
+                Back(title: resalt.addition.rawValue)
                 ScrollView(showsIndicators: false) {
                     ForEach(resalt.players, id: \.self) { player in
                         HouseRow(player: player).padding()
                     }
                 }
             }
-            .navigationTitle(resalt.addition)
+            .navigationTitle(resalt.addition.rawValue)
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
@@ -29,7 +29,7 @@ struct ResaltsView_Previews: PreviewProvider {
     static var previews: some View {
         ResaltsView(resalt: Resalt(
             players: [Player(name: "sdfg", house: "Barateon")],
-            addition: "Dance with Dragons")
+            addition: .danceWithDragons)
         )
             .preferredColorScheme(.dark)
     }

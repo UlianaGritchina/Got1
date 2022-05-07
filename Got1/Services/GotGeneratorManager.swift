@@ -7,12 +7,12 @@
 
 import Foundation
 
-class GotResultsManager {
+class GotGeneratorManager {
     
     let playersNames: [String]
-    let addition: String
+    let addition: Additions
     
-    init(playersNames: [String], addition: String) {
+    init(playersNames: [String], addition: Additions) {
         self.playersNames = playersNames
         self.addition = addition
     }
@@ -21,20 +21,20 @@ class GotResultsManager {
     private var resultPlayers: [Player] = []
     private var houses: [String] = []
     
-    @Published var result = Resalt(players: [], addition: "")
+    @Published var result = Resalt(players: [], addition: .base)
     
     func getResult() {
         getPlayersForGame()
         
         switch addition {
-        case "Base":
+        case .base:
             houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell"]
             if (playersForGame.count > 2) && (playersForGame.count < 7) {
                makeResultsArray()
             }
             result = Resalt(players: resultPlayers, addition: addition)
             
-        case "Mother of Dragons":
+        case .motherOfDragons:
             houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell","Arryn"]
             houses.shuffle()
             if (playersForGame.count > 2) {
@@ -52,7 +52,7 @@ class GotResultsManager {
                 result = Resalt(players: resultPlayers, addition: addition)
             }
             
-        case "Feast of Ravens":
+        case .feastOfRavens:
             houses = ["Arryn","Stark","Lannister","Barateon"]
             if playersForGame.count == 4 {
                 makeResultsArray()

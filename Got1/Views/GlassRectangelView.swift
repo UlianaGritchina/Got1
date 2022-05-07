@@ -12,13 +12,12 @@ struct GlassRectangleView: View {
     let height: CGFloat
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.purple.opacity(0.5),.blue, .white],
+            LinearGradient(colors: [.gray, .gray.opacity(0.3)],
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .mask(RoundedRectangle(cornerRadius: 20)
                         .stroke(.white, lineWidth: 1)
-                        .frame(width: width, height: height)
-                        .opacity(1))
+                        .frame(width: width, height: height))
             
             Rectangle()
                 .opacity(0)
@@ -26,7 +25,6 @@ struct GlassRectangleView: View {
                 .frame(width: width, height: height)
                 .cornerRadius(20)
                 .opacity(0.5)
-                .blur(radius: 1)
         }
         .frame(width: width + 2, height: height + 2)
         

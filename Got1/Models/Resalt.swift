@@ -9,5 +9,5 @@ import Foundation
 
 struct Resalt {
     let players: [Player]
-    let addition: String
+    let addition: Additions
 }

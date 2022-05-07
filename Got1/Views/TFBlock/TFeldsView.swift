@@ -15,19 +15,16 @@ struct TFeldsView: View {
         HStack {
             VStack {
                 ForEach(1...4, id: \.self) { index  in
-                    TextField("Player \(index)", text: $players[index - 1])
-                        .keyboardType(.default)
-                        .disableAutocorrection(true)
-                    
+                    TextField("Игрок \(index)", text: $players[index - 1])
+                        .textContentType(.none)
                         .frame(width: width / 2.2, height: height / 20)
                         .font(.system(size: height / 30))
                         .multilineTextAlignment(.center)
-                    
                 }
             }
             VStack {
                 ForEach(5...8, id: \.self) { index in
-                    TextField("Player \(index)", text: $players[index - 1])
+                    TextField("Игрок \(index)", text: $players[index - 1])
                         .frame(width: width / 2.2, height: height / 20)
                         .font(.system(size: height / 30))
                         .multilineTextAlignment(.center)

@@ -11,12 +11,13 @@ struct KingsView: View {
     @StateObject var viewModel = KingsViewViewModel()
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
-    
+    @State private var isShowNewDetail = false
+    @State private var isShowPlayers = false
+    @State private var finalRound = "5"
     var body: some View {
         NavigationView {
-            ZStack {
-                BackView().opacity(0.6)
-                VStack {
+            VStack {
+                ZStack {
                     ScrollView {
                         ForEach(viewModel.kings, id: \.self) { king in
                             KingRowView(king: king,
@@ -24,15 +25,35 @@ struct KingsView: View {
                                 withAnimation {
                                     viewModel.deleteKing(king: king)
                                 }
-                            }).onAppear { viewModel.count += 1 }
-                            .padding()
+                            })
+                                .padding()
                         }
                     }
+                    .opacity(viewModel.isShowNewKingCard ? 0.3 : 1)
+                    .opacity(isShowNewDetail ? 0.3 : 1)
+                    .animation(.default, value: viewModel.isShowNewKingCard)
+                    
+                    VStack {
+                        NewKingCard
+                        Spacer()
+                    }
+                    
+                    
+                    VStack {
+                        ZStack {
+                            
+                            NewGameDetailsView(isShowDetail: $isShowNewDetail, isShowNewKing: $viewModel.isShowNewKingCard)
+                            
+                        }
+                        
+                        Spacer()
+                    }
+                    .offset(x: isShowNewDetail ? 0 : width, y: 0)
+                    .animation(.spring(), value: isShowNewDetail)
+                    
                 }
-                NewKingCard
-                
             }
-            .navigationTitle("Kings: \(viewModel.count)")
+            .navigationTitle("Короли: \(viewModel.kings.count)")
             
             .toolbar { Button(action: {viewModel.isShowNewKingCard.toggle()}) {
                 Image(systemName: viewModel.isShowNewKingCard ? "person.fill.badge.minus" : "person.fill.badge.plus")
@@ -42,16 +63,14 @@ struct KingsView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .navigationViewStyle(StackNavigationViewStyle())
     }
-    
 }
 
 
 struct KingsView_Previews: PreviewProvider {
     static var previews: some View {
         KingsView()
-            
+        
     }
 }
 
@@ -60,84 +79,128 @@ extension KingsView {
         Rectangle()
             .opacity(0)
             .background(.ultraThinMaterial)
-            .frame(width: width - 20, height: height / 2.7)
+            .frame(width: width - 20, height: height / 3)
             .cornerRadius(20)
+        
             .overlay(
                 ZStack {
-                    
-                    
-                    
                     LinearGradient(colors: [.white.opacity(0.5),.gray.opacity(0)],
                                    startPoint: .topLeading,
                                    endPoint: .bottomTrailing)
                     
                         .mask(RoundedRectangle(cornerRadius: 20).stroke())
-                        .frame(width: width - 20, height: height / 2.7)
+                        .frame(width: width - 20, height: height / 3)
                         .overlay(
-                            VStack(spacing: height / 140) {
-                                Text("New King")
-                                    .bold()
-                                    .padding()
-                                    .font(.system(size: height / 30))
-                                
-                                TextField("Name", text: $viewModel.king.name)
-                                    .multilineTextAlignment(.center)
-                                    .font(.system(size: height / 35))
-                                
-                                
-                                Menu(viewModel.king.house) {
-                                    ForEach(viewModel.houses, id: \.self) { house in
-                                        Button(house, action: {viewModel.king.house = house})
-                                    }
-                                }
-                                .font(.system(size: height / 35))
-                                .padding()
-                                
-                                Menu(viewModel.addition) {
-                                    ForEach(viewModel.additions, id: \.self) { additon in
-                                        Button(additon, action: {viewModel.addition = additon})
-                                    }
-                                }
-                                .font(.system(size: height / 35))
-                                .padding()
-                                
-                                
-                                Button(action: {
-                                    if viewModel.king.name != "" {
-                                        viewModel.addKing()
-                                        viewModel.isShowNewKingCard = false
-                                        viewModel.clearData()
-                                        UIApplication.shared.endEditing()
-                                    } else {
-                                        viewModel.isShowNewKingCard = false
-                                        viewModel.clearData()
-                                        UIApplication.shared.endEditing()
-                                    }
+                            VStack(spacing: height / 50) {
+                                HStack(alignment: .bottom) {
+                                    Text("Новый Король:")
+                                        .bold()
+                                        .font(.system(size: height / 30))
                                     
-                                    
-                                }) {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke()
-                                        .overlay(
-                                            Text("Save")
-                                                .bold()
-                                                .font(.system(size: height / 40))
-                                        )
+                                    Spacer()
                                 }
-                                .frame(width: width / 2, height: height / 20)
+                                
+                                VStack(alignment: .leading, spacing: 0) {
+                                    TextField("Имя", text: $viewModel.king.name)
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .frame(width: width / 2, height: 1)
+                                        .foregroundColor(.gray)
+                                    
+                                }.font(.system(size: height / 35))
+                                
+                                
+                                
+                                HStack() {
+                                    Text(viewModel.king.house)
+                                        .font(.system(size: height / 40))
+                                    
+                                    Spacer()
+                                    Menu("Выбрать") {
+                                        ForEach(viewModel.houses, id: \.self) { house in
+                                            Button(house, action: {viewModel.king.house = house})
+                                        }
+                                    }
+                                }
+                                
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(width: width - 40, height: 1)
+                                    .foregroundColor(.gray)
+                                
+                                HStack() {
+                                    Text(viewModel.addition)
+                                        .font(.system(size: height / 40))
+                                    
+                                    Spacer()
+                                    
+                                    Menu("Выбрать") {
+                                        ForEach(viewModel.additions, id: \.self) { additon in
+                                            Button(additon, action: {viewModel.addition = additon})
+                                        }
+                                    }
+                                }
+                                
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(width: width - 40, height: 1)
+                                    .foregroundColor(.gray)
+                                
+                                
+                                
+                                
+                                
+                                HStack {
+                                    Button(action: {
+                                        if viewModel.king.name != "" {
+                                            viewModel.addKing()
+                                            viewModel.isShowNewKingCard = false
+                                            viewModel.clearData()
+                                            UIApplication.shared.endEditing()
+                                        } else {
+                                            viewModel.isShowNewKingCard = false
+                                            viewModel.clearData()
+                                            UIApplication.shared.endEditing()
+                                        }
+                                        
+                                        
+                                    }) {
+                                        
+                                        
+                                        Text("Сохранить")
+                                            .bold()
+                                            .font(.system(size: height / 40))
+                                        
+                                    }
+                                    .frame(width: width / 2, height: height / 25)
+                                    
+                                    Button(action: {
+                                        isShowNewDetail = true
+                                        viewModel.isShowNewKingCard = false
+                                        
+                                        
+                                    }) {
+                                        
+                                        Text("Добавить детеали")
+                                        
+                                            .font(.system(size: height / 50))
+                                        
+                                    }
+                                    .frame(width: width / 2, height: height / 25)
+                                    
+                                }
+                                
+                                
+                                
                                 
                             }.padding()
                         )
                     
-                 
+                    
                     
                 }
             )
-            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 10)
-            .frame(width: width - 20, height: height / 2.5)
-            .rotationEffect(Angle(degrees: viewModel.isShowNewKingCard ? 0 : 180))
-            .offset(x: 0, y: viewModel.isShowNewKingCard ? 0 : -height)
+            .offset(x: viewModel.isShowNewKingCard ? 0 : -width , y: 0)
+            .rotation3DEffect(.degrees(viewModel.isShowNewKingCard ? 0 : -20), axis: (x: 0.0, y: -0.5, z: 0.0))
             .animation(.spring(), value: viewModel.isShowNewKingCard)
+        
     }
 }
 
@@ -173,25 +236,25 @@ struct KingRowView: View {
             GameDetailsView()
         })
         .actionSheet(isPresented: $showingOptions) {
-                       ActionSheet(
-                           title: Text("Select a color"),
-                           buttons: [
-                               .default(Text("Game detail")) {
-                                   isShowingGameDetailView.toggle()
-                               },
-
-                                .default(Text("\(king.name ?? "") info")) {
-                                 
-                               },
-
-                               .destructive(Text("Delete")) {
-                                   deleteAction()
-                               },
-                               
-                                .cancel()
-                           ]
-                       )
-                   }
+            ActionSheet(
+                title: Text("Select a color"),
+                buttons: [
+                    .default(Text("Game detail")) {
+                        isShowingGameDetailView.toggle()
+                    },
+                    
+                        .default(Text("\(king.name ?? "") info")) {
+                            
+                        },
+                    
+                        .destructive(Text("Delete")) {
+                            deleteAction()
+                        },
+                    
+                        .cancel()
+                ]
+            )
+        }
         
         .overlay(
             HStack {
@@ -226,14 +289,14 @@ struct KingRowView: View {
                                 .cornerRadius(10)
                                 .overlay(Image(systemName: "ellipsis"))
                         }
-                       
+                        
                     }
                     
-                   
+                    
                 }.frame(width: width / 18)
                     .offset(x: -width / 10)
-              
-            
+                
+                
             }.padding()
         )
     }

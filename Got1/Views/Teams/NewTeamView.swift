@@ -11,8 +11,8 @@ struct NewTeamView: View {
     @ObservedObject var vm: TeamsViewViewModel
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
-    @State private var gotManager = GotResultsManager(playersNames: [],
-                                                      addition: "")
+    @State private var gotManager = GotGeneratorManager(playersNames: [],
+                                                      addition: .base)
     @State private var isShowAlert = false
     @State private var addition: Additions = .base
     var body: some View {
@@ -36,14 +36,13 @@ struct NewTeamView: View {
                         
                         VStack(spacing: UIScreen.main.bounds.height / 6) {
                             
-                            AddiotionPickerView(selected: $vm.addition).padding()
-                            
                             Button(action: {
                                 vm.addition = addition
 
-                                gotManager = GotResultsManager(playersNames: vm.players,
-                                                               addition: vm.addition.rawValue)
+                                gotManager = GotGeneratorManager(playersNames: vm.players,
+                                                               addition: vm.addition)
                                 gotManager.getResult()
+                                                               
                                 if !gotManager.result.players.isEmpty {
                                     isShowAlert = false
                                     vm.saveTeam()

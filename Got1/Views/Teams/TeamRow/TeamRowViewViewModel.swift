@@ -9,13 +9,13 @@ import Foundation
 
 class TeamRowViewViewModel: ObservableObject {
     
-    @Published var result: Resalt = Resalt(players: [], addition: "")
+    @Published var result: Resalt = Resalt(players: [], addition: .base)
     @Published var isShowResultsView = false
     
-    private var gotManager = GotResultsManager(playersNames: [], addition: "")
+    private var gotManager = GotGeneratorManager(playersNames: [], addition: .base)
     
-    func getRsult(players: [String], addition: String) {
-        gotManager = GotResultsManager(playersNames: players, addition: addition)
+    func getRsult(players: [String], addition: Additions) {
+        gotManager = GotGeneratorManager(playersNames: players, addition: addition)
         gotManager.getResult()
         result = gotManager.result
        

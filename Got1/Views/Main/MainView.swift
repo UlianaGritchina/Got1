@@ -8,49 +8,58 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel = MainViewViewModel()
+    @StateObject var vm = MainViewViewModel()
     var body: some View {
         NavigationView {
-            ScrollView {
-                ZStack {
-                    BackView().opacity(0.6)
-                    VStack {
-                        TFRectangleView(players: $viewModel.players)
-                            .padding(.top, UIScreen.main.bounds.height / 6 + 15)
+            ZStack {
+                BackgoundView(isShowingSupportView: vm.showSupport)
+                VStack {
+                    ZStack {
+                        TFRectangleView(players: $vm.players)
+                            .padding()
+                            .opacity(vm.showSupport ? 0.3 : 1)
+                            .animation(.default, value: vm.showSupport)
                         
-                        VStack(spacing: UIScreen.main.bounds.height / 9) {
-                            
-                            AddiotionPickerView(selected: $viewModel.addition).padding()
-                            
-                            ButtonView(title: "Start", action: {
-                                viewModel.getResult()
-                                viewModel.togleShowResaltsView()
-                            })
+                        SupportCardView(isShow: vm.showSupport)
+                    }
+                    Spacer()
+                }
+                .navigationTitle("Игроки")
+                
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Button("Отмена") { UIApplication.shared.endEditing() }
+                        .foregroundColor(.red)
+                        
+                        Spacer()
+                        
+                        AdditionsMenuView(vm: vm)
+                        
+                        Spacer()
+                        
+                        Button(action: { vm.start() }) {
+                            Text("Начать")
+                                .bold()
+                                .foregroundColor(.green)
                         }
                     }
                 }
-            }
-            .ignoresSafeArea()
-            .navigationTitle("Players")
-            .preferredColorScheme(.dark)
-            
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") { UIApplication.shared.endEditing() }
+                
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        SupportButtonView(isShowingSupportView: $vm.showSupport)
+                    }
+                }
+                
+                .alert("Wrong players count", isPresented: $vm.showAlert) {
+                    Button("OK", role: .cancel) { }
+                }
+                
+                .sheet(isPresented: $vm.showResaltsView) {
+                    ResaltsView(resalt: vm.resalt)
                 }
             }
-            
-            .alert("Wrong players count", isPresented: $viewModel.showAlert) {
-                Button("OK", role: .cancel) { }
-            }
-            
-            .sheet(isPresented: $viewModel.showResaltsView) {
-                ResaltsView(resalt: viewModel.resalt)
-            }
-            
-        }
-        .preferredColorScheme(.dark)
+        }.preferredColorScheme(.dark)
     }
 }
 

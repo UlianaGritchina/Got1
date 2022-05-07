@@ -10,8 +10,8 @@ import Foundation
 class KingsViewViewModel: ObservableObject {
     
     @Published var kings: [King] = CoreDataManager.shered.savedKings
-    @Published var king = Player(name: "", house: "house")
-    @Published var addition = "Base"
+    @Published var king = Player(name: "", house: "Дом")
+    @Published var addition = "Дополнение"
     @Published var isShowNewKingCard = false
     @Published var count = 0
     
@@ -36,8 +36,8 @@ class KingsViewViewModel: ObservableObject {
     }
     
     func clearData() {
-        king = Player(name: "", house: "house")
-        addition = "Base"
+        king = Player(name: "", house: "Дом")
+        addition = "Дополнение"
     }
     
 }
