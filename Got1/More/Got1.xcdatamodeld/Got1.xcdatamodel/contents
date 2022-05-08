@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Game" representedClassName="Game" syncable="YES" codeGenerationType="class">
+        <attribute name="finalRound" optional="YES" attributeType="String"/>
+        <attribute name="hours" optional="YES" attributeType="String"/>
+        <attribute name="min" optional="YES" attributeType="String"/>
+        <attribute name="player1" optional="YES" attributeType="String"/>
+        <attribute name="player2" optional="YES" attributeType="String"/>
+        <attribute name="player3" optional="YES" attributeType="String"/>
+        <attribute name="player4" optional="YES" attributeType="String"/>
+        <attribute name="player5" optional="YES" attributeType="String"/>
+        <attribute name="player6" optional="YES" attributeType="String"/>
+        <attribute name="player7" optional="YES" attributeType="String"/>
+        <attribute name="player8" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="King" representedClassName="King" syncable="YES" codeGenerationType="class">
         <attribute name="addition" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -22,5 +35,6 @@
     <elements>
         <element name="King" positionX="-63" positionY="-9" width="128" height="89"/>
         <element name="Team" positionX="-27" positionY="54" width="128" height="194"/>
+        <element name="Game" positionX="-45" positionY="108" width="128" height="194"/>
     </elements>
 </model>

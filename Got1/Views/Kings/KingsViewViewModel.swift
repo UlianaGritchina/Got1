@@ -11,12 +11,12 @@ class KingsViewViewModel: ObservableObject {
     
     @Published var kings: [King] = CoreDataManager.shered.savedKings
     @Published var king = Player(name: "", house: "Дом")
-    @Published var addition = "Дополнение"
+    @Published var addition = "База"
     @Published var isShowNewKingCard = false
     @Published var count = 0
     
-    let houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell", "Arryn", "Targarien"]
-    let additions = ["Base","Mother of Dragons","Feast of Ravens","Dance with Dragons"]
+    let houses = ["Баратеон","Старк","Ланнистер","Грейджой","Тирелл","Мартелл","Аррен", "Таргариен"]
+    let additions = ["База", "Мать Драконов", "Пир Воронов", "Танец с Драконами"]
     
     func addKing() {
         CoreDataManager.shered.addKing(player: king, addition: addition)
@@ -37,7 +37,7 @@ class KingsViewViewModel: ObservableObject {
     
     func clearData() {
         king = Player(name: "", house: "Дом")
-        addition = "Дополнение"
+        addition = "База"
     }
     
 }

@@ -18,19 +18,17 @@ enum Additions: String {
 class MainViewViewModel: ObservableObject {
     
     @Published var players = ["","","","","","","",""]
-    var additions: [Additions] = [.base, .motherOfDragons, .feastOfRavens, .danceWithDragons]
-    @Published var showAdditions = false
-    @Published var showResaltsView = false
-    @Published var showAlert = false
-    @Published var showSupport = false
-    @Published var selectedAddition = "Base"
+    @Published var isShowingResaltsView = false
+    @Published var isShowingAlert = false
+    @Published var isShowingSupportView = false
     @Published var addition: Additions = .base
     @Published var resalt: Resalt = Resalt(players: [], addition: .base)
+    var additions: [Additions] = [.base, .motherOfDragons, .feastOfRavens, .danceWithDragons]
     
     private var gotManager = GotGeneratorManager(playersNames: [], addition: .base)
     
     func start() {
-        UIApplication.shared.endEditing()
+        //UIApplication.shared.endEditing()
         getResult()
         togleShowResaltsView()
     }
@@ -41,22 +39,16 @@ class MainViewViewModel: ObservableObject {
         resalt = gotManager.result
     }
     
-    func togleShowAdditons() {
-        showAdditions.toggle()
-    }
-    
     func togleShowResaltsView() {
         if !resalt.players.isEmpty {
-            showResaltsView.toggle()
+            isShowingResaltsView.toggle()
         } else {
-            showAlert.toggle()
+            isShowingAlert.toggle()
         }
     }
     
     func chuseAdditions(addition: Additions) {
         self.addition = addition
     }
-    
-  
     
 }

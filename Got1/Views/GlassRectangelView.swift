@@ -20,11 +20,10 @@ struct GlassRectangleView: View {
                         .frame(width: width, height: height))
             
             Rectangle()
-                .opacity(0)
                 .background(.ultraThinMaterial)
                 .frame(width: width, height: height)
                 .cornerRadius(20)
-                .opacity(0.5)
+                .opacity(0.1)
         }
         .frame(width: width + 2, height: height + 2)
         

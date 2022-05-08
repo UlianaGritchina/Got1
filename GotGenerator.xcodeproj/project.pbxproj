@@ -22,6 +22,7 @@
 		0E4A5C3828186A2600F97182 /* GameDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A5C3728186A2600F97182 /* GameDetails.swift */; };
 		0E4EA35E2812A7E500452B5A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4EA35D2812A7E500452B5A /* SettingsView.swift */; };
 		0E4EDA6327F04DC000631F99 /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4EDA6227F04DC000631F99 /* BackView.swift */; };
+		0E5087E12827991600E1EFB4 /* KingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5087E02827991600E1EFB4 /* KingRowView.swift */; };
 		0E515A5527FD64E800D49077 /* TeamRowViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E515A5427FD64E800D49077 /* TeamRowViewViewModel.swift */; };
 		0E515A5B27FD7D4A00D49077 /* GlassRectangelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E515A5A27FD7D4A00D49077 /* GlassRectangelView.swift */; };
 		0E52CA1527FED90B00363FE0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E52CA1427FED90B00363FE0 /* Launch Screen.storyboard */; };
@@ -61,6 +62,7 @@
 		0E4A5C3728186A2600F97182 /* GameDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetails.swift; sourceTree = "<group>"; };
 		0E4EA35D2812A7E500452B5A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0E4EDA6227F04DC000631F99 /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
+		0E5087E02827991600E1EFB4 /* KingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingRowView.swift; sourceTree = "<group>"; };
 		0E515A5427FD64E800D49077 /* TeamRowViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRowViewViewModel.swift; sourceTree = "<group>"; };
 		0E515A5A27FD7D4A00D49077 /* GlassRectangelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassRectangelView.swift; sourceTree = "<group>"; };
 		0E52CA1427FED90B00363FE0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				0E6E8BB027F2E6A6006C7E2A /* KingsViewViewModel.swift */,
 				0E5A8EE127F1D7250031152B /* KingsView.swift */,
+				0E5087E02827991600E1EFB4 /* KingRowView.swift */,
 				0E9A42F328228808006BD7BB /* NewGameDetailsView.swift */,
 			);
 			path = Kings;
@@ -367,6 +370,7 @@
 				0E07F7EC27F6D6CA00B9D02B /* TeamsViewViewModel.swift in Sources */,
 				0E5AA0E62822BB9B002AAD3E /* PlayersDetailView.swift in Sources */,
 				0E220C2527EF150300F63124 /* Got1.xcdatamodeld in Sources */,
+				0E5087E12827991600E1EFB4 /* KingRowView.swift in Sources */,
 				0E220C5427EF2D6C00F63124 /* ResaltsView.swift in Sources */,
 				0E4A5C3828186A2600F97182 /* GameDetails.swift in Sources */,
 				0E220C4E27EF26FE00F63124 /* TFRectangleView.swift in Sources */,

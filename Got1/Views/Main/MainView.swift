@@ -12,15 +12,15 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                BackgoundView(isShowingSupportView: vm.showSupport)
+                BackgoundView(isShowingSupportView: vm.isShowingSupportView)
                 VStack {
                     ZStack {
                         TFRectangleView(players: $vm.players)
                             .padding()
-                            .opacity(vm.showSupport ? 0.3 : 1)
-                            .animation(.default, value: vm.showSupport)
+                            .opacity(vm.isShowingSupportView ? 0.3 : 1)
+                            .animation(.default, value: vm.isShowingSupportView)
                         
-                        SupportCardView(isShow: vm.showSupport)
+                        SupportCardView(isShow: vm.isShowingSupportView)
                     }
                     Spacer()
                 }
@@ -47,15 +47,15 @@ struct MainView: View {
                 
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        SupportButtonView(isShowingSupportView: $vm.showSupport)
+                        SupportButtonView(isShowingSupportView: $vm.isShowingSupportView)
                     }
                 }
                 
-                .alert("Wrong players count", isPresented: $vm.showAlert) {
+                .alert("Wrong players count", isPresented: $vm.isShowingAlert) {
                     Button("OK", role: .cancel) { }
                 }
                 
-                .sheet(isPresented: $vm.showResaltsView) {
+                .sheet(isPresented: $vm.isShowingResaltsView) {
                     ResaltsView(resalt: vm.resalt)
                 }
             }

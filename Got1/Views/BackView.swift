@@ -23,7 +23,9 @@ struct BackView: View {
                 .ignoresSafeArea()
                 .opacity(0.6)
             
-            LinearGradient(colors: [.red.opacity(0.3),.purple,.blue], startPoint: .bottom, endPoint: .top)
+            LinearGradient(colors: [.red.opacity(0.3),.purple,.blue],
+                           startPoint: .bottom,
+                           endPoint: .top)
                 .opacity(0.2)
                 .ignoresSafeArea()
         }

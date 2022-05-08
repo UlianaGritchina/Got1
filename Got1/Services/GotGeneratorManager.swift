@@ -28,19 +28,19 @@ class GotGeneratorManager {
         
         switch addition {
         case .base:
-            houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell"]
+            houses = ["Баратеон","Старк","Ланнистер","Грейджой","Тирелл","Мартелл"]
             if (playersForGame.count > 2) && (playersForGame.count < 7) {
                makeResultsArray()
             }
             result = Resalt(players: resultPlayers, addition: addition)
             
         case .motherOfDragons:
-            houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell","Arryn"]
+            houses = ["Баратеон","Старк","Ланнистер","Грейджой","Тирелл","Мартелл","Аррен"]
             houses.shuffle()
             if (playersForGame.count > 2) {
                 if playersForGame.count != 3 {
                     playersForGame.shuffle()
-                    let targarien = Player(name: playersForGame[0], house: "Targarien")
+                    let targarien = Player(name: playersForGame[0], house: "Таргариен")
                     playersForGame.remove(at: 0)
                     makeResultsArray()
                     resultPlayers.append(targarien)
@@ -53,7 +53,7 @@ class GotGeneratorManager {
             }
             
         case .feastOfRavens:
-            houses = ["Arryn","Stark","Lannister","Barateon"]
+            houses = ["Аррен","Старк","Ланнистер","Баратеон"]
             if playersForGame.count == 4 {
                 makeResultsArray()
                 result = Resalt(players: resultPlayers, addition: addition)

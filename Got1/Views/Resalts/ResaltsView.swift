@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ResaltsView: View {
     let resalt: Resalt
-    
     var body: some View {
         NavigationView {
             ZStack {

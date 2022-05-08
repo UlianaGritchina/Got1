@@ -15,6 +15,8 @@ struct NewGameDetailsView: View {
     @State private var finalRound = "0"
     @State private var hourse = ""
     @State private var min = ""
+    @State private var players: [String] = ["","","","","","","",""]
+    @State private var isShowingPlayers = true
     var body: some View {
         ZStack {
             Rectangle()
@@ -35,10 +37,6 @@ struct NewGameDetailsView: View {
                                 .font(.system(size: height / 30))
                             Spacer()
                         }
-                        
-                        
-                        
-                        
                         HStack {
                             Text("Финальный раунд - ")
                                 .font(.system(size: height / 40))
@@ -79,7 +77,10 @@ struct NewGameDetailsView: View {
                         Line()
                         
                         HStack {
-                            Text("Команда").font(.system(size: height / 40))
+                            Button(action: {isShowingPlayers.toggle()}) {
+                                Text("Кто играл").font(.system(size: height / 40))
+                            }
+                            
                             Spacer()
                         }
                         
@@ -103,6 +104,49 @@ struct NewGameDetailsView: View {
                         
                     }.padding())
             
+            ZStack {
+                Rectangle()
+                    .opacity(0)
+                    .background(.ultraThinMaterial)
+                    .frame(width: width - 25, height: height / 3 - 5)
+                    .cornerRadius(20)
+                    .onTapGesture {
+                        isShowingPlayers.toggle()
+                    }
+                VStack(alignment: .leading) {
+                    HStack {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: width / 2.5, height: height / 20)
+                                .opacity(0.3)
+                            TextField("Игрок 1", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                                .frame(width: width / 2.5)
+                            .font(.system(size: height / 40))
+                        }
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: width / 5, height: height / 20)
+                                .opacity(0.3)
+                            TextField("Замки", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                                .frame(width: width / 5)
+                                .font(.system(size: height / 40))
+                            .keyboardType(.numberPad)
+                        }
+                            
+                    }.multilineTextAlignment(.center)
+                    
+                    Menu("Дом") {
+                        /*@START_MENU_TOKEN@*/Text("Menu Item 1")/*@END_MENU_TOKEN@*/
+                        /*@START_MENU_TOKEN@*/Text("Menu Item 2")/*@END_MENU_TOKEN@*/
+                        /*@START_MENU_TOKEN@*/Text("Menu Item 3")/*@END_MENU_TOKEN@*/
+                    }
+                }
+            
+            }
+            .offset(x: 0, y: isShowingPlayers ? 0 : -height)
+            .animation(.spring(), value: isShowingPlayers)
+            
+            
         }
         .rotation3DEffect(.degrees(isShowDetail ? 0 : 20), axis: (x: 0.0, y: -0.5, z: 0.0))
     }
@@ -110,7 +154,7 @@ struct NewGameDetailsView: View {
 
 struct NewGameDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameDetailsView(isShowDetail: .constant(false), isShowNewKing: .constant(true))
+        NewGameDetailsView(isShowDetail: .constant(true), isShowNewKing: .constant(true))
             .preferredColorScheme(.dark)
     }
 }
