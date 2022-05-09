@@ -60,7 +60,7 @@ class GotGeneratorManager {
             }
             
         default:
-            houses = ["Barateon","Stark","Lannister","Greyjoy","Tirell","Martell"]
+            houses = ["Баратеон","Старк","Ланнистер","Грейджой","Тирелл","Мартелл"]
             if playersForGame.count == 6 {
                 makeResultsArray()
                 result = Resalt(players: resultPlayers, addition: addition)

@@ -19,12 +19,7 @@ struct NewGameDetailsView: View {
     @State private var isShowingPlayers = true
     var body: some View {
         ZStack {
-            Rectangle()
-                .opacity(0)
-                .background(.ultraThinMaterial)
-                .frame(width: width - 20, height: height / 3)
-                .cornerRadius(20)
-            
+            Rect()
             RoundedRectangle(cornerRadius: 20)
                 .stroke(.gray)
                 .frame(width: width - 20, height: height / 3)
@@ -77,7 +72,9 @@ struct NewGameDetailsView: View {
                         Line()
                         
                         HStack {
-                            Button(action: {isShowingPlayers.toggle()}) {
+                            Button(action: {
+                                isShowingPlayers.toggle()
+                            }) {
                                 Text("Кто играл").font(.system(size: height / 40))
                             }
                             
@@ -104,53 +101,34 @@ struct NewGameDetailsView: View {
                         
                     }.padding())
             
-            ZStack {
-                Rectangle()
-                    .opacity(0)
-                    .background(.ultraThinMaterial)
-                    .frame(width: width - 25, height: height / 3 - 5)
-                    .cornerRadius(20)
-                    .onTapGesture {
-                        isShowingPlayers.toggle()
-                    }
-                VStack(alignment: .leading) {
-                    HStack {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: width / 2.5, height: height / 20)
-                                .opacity(0.3)
-                            TextField("Игрок 1", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                                .frame(width: width / 2.5)
-                            .font(.system(size: height / 40))
-                        }
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: width / 5, height: height / 20)
-                                .opacity(0.3)
-                            TextField("Замки", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                                .frame(width: width / 5)
-                                .font(.system(size: height / 40))
-                            .keyboardType(.numberPad)
-                        }
+            Rect()
+                .overlay(
+                    ScrollView {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Button("Отменить", action: {isShowingPlayers.toggle()})
+                                    .foregroundColor(.red)
+                                Spacer()
+                                Button("Сохранить", action: {isShowingPlayers.toggle()})
+                                    .foregroundColor(.green)
+                            }
                             
-                    }.multilineTextAlignment(.center)
-                    
-                    Menu("Дом") {
-                        /*@START_MENU_TOKEN@*/Text("Menu Item 1")/*@END_MENU_TOKEN@*/
-                        /*@START_MENU_TOKEN@*/Text("Menu Item 2")/*@END_MENU_TOKEN@*/
-                        /*@START_MENU_TOKEN@*/Text("Menu Item 3")/*@END_MENU_TOKEN@*/
+                            ForEach(1..<9) { index in
+                                PlayerView(index: index)
+                                Line()
+                            }
+                            
+                        }
                     }
-                }
-            
-            }
-            .offset(x: 0, y: isShowingPlayers ? 0 : -height)
-            .animation(.spring(), value: isShowingPlayers)
-            
+                        .padding()
+                )
+                .offset(x: 0, y: isShowingPlayers ? 0 : -height)
+                .animation(.spring(), value: isShowingPlayers)
             
         }
-        .rotation3DEffect(.degrees(isShowDetail ? 0 : 20), axis: (x: 0.0, y: -0.5, z: 0.0))
     }
 }
+
 
 struct NewGameDetailsView_Previews: PreviewProvider {
     static var previews: some View {
@@ -165,5 +143,61 @@ struct Line: View {
         RoundedRectangle(cornerRadius: 5)
             .frame(width: width - 40, height: 1)
             .foregroundColor(.gray)
+    }
+}
+
+
+struct PlayerView: View {
+    let index: Int
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Игрок \(index)")
+                .font(.system(size: height / 35))
+                .bold()
+            HStack(spacing: width / 15) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: width / 2.5, height: height / 25)
+                        .opacity(0.3)
+                    TextField("Имя", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                        .frame(width: width / 2.5)
+                        .font(.system(size: height / 35))
+                }
+                HStack {
+                    Menu("Замки") {
+                        ForEach(1..<8) { index in
+                            Button(action: {}) {
+                                Text("\(index)")
+                            }
+                        }
+                    }
+                    
+                    Text("5")
+                        .font(.system(size: height / 40))
+                        .bold()
+                }
+                Menu("Дом") {
+                    /*@START_MENU_TOKEN@*/Text("Menu Item 1")/*@END_MENU_TOKEN@*/
+                    /*@START_MENU_TOKEN@*/Text("Menu Item 2")/*@END_MENU_TOKEN@*/
+                    /*@START_MENU_TOKEN@*/Text("Menu Item 3")/*@END_MENU_TOKEN@*/
+                }
+                
+            }
+            .multilineTextAlignment(.center)
+        }
+    }
+}
+
+struct Rect: View {
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    var body: some View {
+        Rectangle()
+            .opacity(0)
+            .background(.ultraThinMaterial)
+            .frame(width: width - 20, height: height / 3)
+            .cornerRadius(20)
     }
 }

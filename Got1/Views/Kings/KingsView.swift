@@ -13,13 +13,13 @@ struct KingsView: View {
     let height = UIScreen.main.bounds.height
     @State private var isShowNewDetail = false
     @State private var isShowPlayers = false
+    @State private var isShowCards = false
     @State private var finalRound = "5"
     var body: some View {
         NavigationView {
             VStack {
                 ZStack {
                     BackgoundView(isShowingSupportView: false)
-                    
                     ScrollView {
                         ForEach(vm.kings, id: \.self) { king in
                             KingRowView(king: king,
@@ -67,7 +67,9 @@ struct KingsView_Previews: PreviewProvider {
 
 extension KingsView {
     private var addBuuton: some View {
-        Button(action: {vm.isShowNewKingCard.toggle()}) {
+        Button(action: {
+            vm.isShowNewKingCard.toggle()
+        }) {
             if vm.isShowNewKingCard || isShowNewDetail {
                 Text("Отменить" )
                     .foregroundColor(.red)
