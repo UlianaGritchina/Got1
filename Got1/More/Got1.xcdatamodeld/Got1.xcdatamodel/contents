@@ -16,8 +16,19 @@
     <entity name="King" representedClassName="King" syncable="YES" codeGenerationType="class">
         <attribute name="addition" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="finalRound" optional="YES" attributeType="String"/>
+        <attribute name="hours" optional="YES" attributeType="String"/>
         <attribute name="house" optional="YES" attributeType="String"/>
+        <attribute name="min" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="player1" optional="YES" attributeType="String"/>
+        <attribute name="player2" optional="YES" attributeType="String"/>
+        <attribute name="player3" optional="YES" attributeType="String"/>
+        <attribute name="player4" optional="YES" attributeType="String"/>
+        <attribute name="player5" optional="YES" attributeType="String"/>
+        <attribute name="player6" optional="YES" attributeType="String"/>
+        <attribute name="player7" optional="YES" attributeType="String"/>
+        <attribute name="player8" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="class">
         <attribute name="addition" optional="YES" attributeType="String"/>
@@ -33,8 +44,8 @@
         <attribute name="teamName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="King" positionX="-63" positionY="-9" width="128" height="89"/>
-        <element name="Team" positionX="-27" positionY="54" width="128" height="194"/>
         <element name="Game" positionX="-45" positionY="108" width="128" height="194"/>
+        <element name="King" positionX="-63" positionY="-9" width="128" height="254"/>
+        <element name="Team" positionX="-27" positionY="54" width="128" height="194"/>
     </elements>
 </model>

@@ -16,7 +16,7 @@ struct NewGameDetailsView: View {
     @State private var hourse = ""
     @State private var min = ""
     @State private var players: [String] = ["","","","","","","",""]
-    @State private var isShowingPlayers = true
+    @State private var isShowingPlayers = false
     var body: some View {
         ZStack {
             Rect()

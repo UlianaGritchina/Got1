@@ -88,7 +88,6 @@ extension KingsView {
             .background(.ultraThinMaterial)
             .frame(width: width - 20, height: height / 3)
             .cornerRadius(20)
-        
             .overlay(
                 ZStack {
                     LinearGradient(colors: [.white.opacity(0.5),.gray.opacity(0)],
