@@ -28,7 +28,7 @@ class MainViewViewModel: ObservableObject {
     private var gotManager = GotGeneratorManager(playersNames: [], addition: .base)
     
     func start() {
-        //UIApplication.shared.endEditing()
+        UIApplication.shared.endEditing()
         getResult()
         togleShowResaltsView()
     }

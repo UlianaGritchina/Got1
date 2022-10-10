@@ -31,7 +31,8 @@ struct GameDetailsView: View {
             
             ZStack {
                 Color(.black).ignoresSafeArea()
-                BackgoundView(isShowingSupportView: false)
+                BackgoundView2()
+                    .opacity(0.2)
                 VStack() {
                     
                     HStack {
@@ -137,5 +138,44 @@ struct GameDetailsView: View {
 struct GameDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         GameDetailsView()
+    }
+}
+
+struct BackgoundView2: View {
+    var body: some View {
+        ZStack {
+            LinearGradient(colors: [.black,.blue.opacity(0.5)],
+                           startPoint: .bottomLeading,
+                           endPoint: .topTrailing)
+            Circles2()
+        }
+        .ignoresSafeArea()
+    }
+}
+
+struct Circles2: View {
+    private let width = UIScreen.main.bounds.width
+    private let height = UIScreen.main.bounds.height
+    var body: some View {
+        ZStack {
+            Circle()
+                .foregroundColor(.blue)
+                .ignoresSafeArea()
+                .frame(width: width)
+                .offset(x: -width / 2, y: 0)
+            
+            Circle()
+                .foregroundColor(.green)
+                .ignoresSafeArea()
+                .frame(width: width / 2)
+                .offset(x: width / 4, y: height / 3)
+            
+            Circle()
+                .foregroundColor(.purple)
+                .ignoresSafeArea()
+                .frame(width: width / 2)
+                .offset(x: width / 2, y: -height / 2)
+        }
+        .blur(radius: 40)
     }
 }
