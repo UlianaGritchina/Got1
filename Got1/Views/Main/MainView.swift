@@ -91,7 +91,7 @@ extension MainView {
     private var doneToolbarButon: some ToolbarContent {
         ToolbarItemGroup(placement: .keyboard) {
             Spacer()
-            Button("Гтово") { UIApplication.shared.endEditing() }
+            Button("Готово") { UIApplication.shared.endEditing() }
         }
     }
     
@@ -108,6 +108,3 @@ extension UIApplication {
                    to: nil, from: nil, for: nil)
     }
 }
-
-
-

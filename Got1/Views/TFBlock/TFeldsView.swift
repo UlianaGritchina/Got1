@@ -18,7 +18,7 @@ struct TFeldsView: View {
                 TextField("Игрок \(index)", text: $players[index - 1])
                     .submitLabel(.next)
                     .focused($focusedField, equals: index)
-                    .font(.system(size: height / 30))
+                    .font(.system(size: height / 35))
             }
         }
         .padding(.vertical, 10)

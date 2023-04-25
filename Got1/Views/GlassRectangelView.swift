@@ -16,7 +16,8 @@ struct GlassRectangleView: View {
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .mask(RoundedRectangle(cornerRadius: 20)
-                        .stroke(.white, lineWidth: 1)
+                    .stroke(.white, lineWidth: 0.5)
+                    .cornerRadius(20)
                         .frame(width: width, height: height))
             
             Rectangle()

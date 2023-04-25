@@ -17,6 +17,7 @@ struct BackgoundView: View {
             Circles()
         }
         .ignoresSafeArea()
+        .blur(radius: 39)
         .opacity(isShowingSupportView ? 0.1 : 0.2)
         .animation(.default, value: isShowingSupportView)
     }

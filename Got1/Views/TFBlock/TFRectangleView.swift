@@ -21,12 +21,12 @@ struct TFRectangleView: View {
                                        startPoint: .topLeading,
                                        endPoint: .bottomTrailing)
                         .mask(RoundedRectangle(cornerRadius: 20)
-                            .stroke(.white, lineWidth: 1)
+                            .stroke(.white, lineWidth: 0.5)
+                            .cornerRadius(20)
                         )
                         
                         Rectangle()
                             .background(.ultraThinMaterial)
-                        
                             .cornerRadius(20)
                             .opacity(0.1)
                     }
