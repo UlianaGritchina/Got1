@@ -25,6 +25,7 @@
 		0E5087E12827991600E1EFB4 /* KingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5087E02827991600E1EFB4 /* KingRowView.swift */; };
 		0E515A5527FD64E800D49077 /* TeamRowViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E515A5427FD64E800D49077 /* TeamRowViewViewModel.swift */; };
 		0E515A5B27FD7D4A00D49077 /* GlassRectangelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E515A5A27FD7D4A00D49077 /* GlassRectangelView.swift */; };
+		0E52AA5229F8462700BB8F5E /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E52AA5129F8462700BB8F5E /* UIAplication + Extension.swift */; };
 		0E52CA1527FED90B00363FE0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E52CA1427FED90B00363FE0 /* Launch Screen.storyboard */; };
 		0E5A8EE227F1D7250031152B /* KingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5A8EE127F1D7250031152B /* KingsView.swift */; };
 		0E5AA0E62822BB9B002AAD3E /* PlayersDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5AA0E52822BB9B002AAD3E /* PlayersDetailView.swift */; };
@@ -65,6 +66,7 @@
 		0E5087E02827991600E1EFB4 /* KingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingRowView.swift; sourceTree = "<group>"; };
 		0E515A5427FD64E800D49077 /* TeamRowViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRowViewViewModel.swift; sourceTree = "<group>"; };
 		0E515A5A27FD7D4A00D49077 /* GlassRectangelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassRectangelView.swift; sourceTree = "<group>"; };
+		0E52AA5129F8462700BB8F5E /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
 		0E52CA1427FED90B00363FE0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0E5A8EE127F1D7250031152B /* KingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingsView.swift; sourceTree = "<group>"; };
 		0E5AA0E52822BB9B002AAD3E /* PlayersDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersDetailView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				0E3A7D0C28058CC3009EAE13 /* SupportingFiles */,
+				0E52AA5029F8461500BB8F5E /* Extensions */,
 				0E3C7A7227EF569500DFC4E9 /* Models */,
 				0E220C4927EF154400F63124 /* Views */,
 				0E220C4C27EF26DA00F63124 /* Components */,
@@ -218,6 +221,14 @@
 				0E5E0C5F27F4A91100E47804 /* TeamRowView.swift */,
 			);
 			path = TeamRow;
+			sourceTree = "<group>";
+		};
+		0E52AA5029F8461500BB8F5E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0E52AA5129F8462700BB8F5E /* UIAplication + Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		0E5E0C5927F49F7300E47804 /* Main */ = {
@@ -350,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E9A42F428228808006BD7BB /* NewGameDetailsView.swift in Sources */,
+				0E52AA5229F8462700BB8F5E /* UIAplication + Extension.swift in Sources */,
 				0E5E0C5E27F4A1E300E47804 /* TeamsView.swift in Sources */,
 				0EDBB9C82826A2F900849AF7 /* SupportCardView.swift in Sources */,
 				0E4A5C36281862D700F97182 /* GameDetailsView.swift in Sources */,
