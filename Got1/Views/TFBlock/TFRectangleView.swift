@@ -13,9 +13,24 @@ struct TFRectangleView: View {
     let height = UIScreen.main.bounds.height
     var body: some View {
         ZStack {
-            GlassRectangleView(width: width - 40, height: height * 0.3)
-           
+            
             TFeldsView(players: $players)
+                .background {
+                    ZStack {
+                        LinearGradient(colors: [.gray, .gray.opacity(0.3)],
+                                       startPoint: .topLeading,
+                                       endPoint: .bottomTrailing)
+                        .mask(RoundedRectangle(cornerRadius: 20)
+                            .stroke(.white, lineWidth: 1)
+                        )
+                        
+                        Rectangle()
+                            .background(.ultraThinMaterial)
+                        
+                            .cornerRadius(20)
+                            .opacity(0.1)
+                    }
+                }
         }
     }
 }

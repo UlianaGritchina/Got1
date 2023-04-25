@@ -133,7 +133,6 @@ struct NewGameDetailsView: View {
 struct NewGameDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NewGameDetailsView(isShowDetail: .constant(true), isShowNewKing: .constant(true))
-            .preferredColorScheme(.dark)
     }
 }
 

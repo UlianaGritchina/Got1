@@ -32,6 +32,5 @@ struct AdditionsMenuView: View {
 struct AdditionsMenuView_Previews: PreviewProvider {
     static var previews: some View {
         AdditionsMenuView(vm: MainViewViewModel())
-            .preferredColorScheme(.dark)
     }
 }

@@ -13,60 +13,92 @@ struct MainView: View {
         NavigationView {
             ZStack {
                 BackgoundView(isShowingSupportView: vm.isShowingSupportView)
-                VStack {
-                    ZStack {
-                        TFRectangleView(players: $vm.players)
-                            .padding()
-                            .opacity(vm.isShowingSupportView ? 0.3 : 1)
-                            .animation(.default, value: vm.isShowingSupportView)
+                ScrollView {
+                    VStack {
+                        playersTextFields
                         
-                        SupportCardView(isShow: vm.isShowingSupportView)
+                        additionPicker
+                        
+                        startButton
                     }
-                    Spacer()
-                }
-                .navigationTitle("Игроки")
-                
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Button("Отмена") { UIApplication.shared.endEditing() }
-                        .foregroundColor(.red)
-                        
-                        Spacer()
-                        
-                        AdditionsMenuView(vm: vm)
-                        
-                        Spacer()
-                        
-                        Button(action: { vm.start() }) {
-                            Text("Начать")
-                                .bold()
-                                .foregroundColor(.green)
-                        }
+                    .navigationTitle("Игроки")
+                    
+                    .toolbar {
+                        doneToolbarButon
+                        supportToolbarButton
                     }
-                }
-                
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        SupportButtonView(isShowingSupportView: $vm.isShowingSupportView)
+                    
+                    .alert("Wrong players count", isPresented: $vm.isShowingAlert) {
+                        Button("OK", role: .cancel) { }
                     }
-                }
-                
-                .alert("Wrong players count", isPresented: $vm.isShowingAlert) {
-                    Button("OK", role: .cancel) { }
-                }
-                
-                .sheet(isPresented: $vm.isShowingResaltsView) {
-                    ResaltsView(resalt: vm.resalt)
+                    .sheet(isPresented: $vm.isShowingResaltsView) {
+                        ResaltsView(resalt: vm.resalt)
+                    }
                 }
             }
-        }.preferredColorScheme(.dark)
+        }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .preferredColorScheme(.dark)
+    }
+}
+
+
+extension MainView {
+    
+    private var playersTextFields: some View {
+        ZStack {
+            TFRectangleView(players: $vm.players)
+                .padding()
+                .opacity(vm.isShowingSupportView ? 0.3 : 1)
+                .animation(.default, value: vm.isShowingSupportView)
+            
+            SupportCardView(isShow: vm.isShowingSupportView)
+        }
+    }
+    
+    private var startButton: some View {
+        Button(action: vm.start) {
+            GlassRectangleView(width: UIScreen.main.bounds.width / 1.5, height: 50)
+                .opacity(0.8)
+                .overlay {
+                    Text("Начать")
+                        .foregroundColor(.white)
+                        .font(.system(size: 23, weight: .medium, design: .rounded))
+                }
+        }
+        .padding(.vertical)
+    }
+    
+    private var additionPicker: some View {
+        HStack {
+            Spacer()
+            GlassRectangleView(width: UIScreen.main.bounds.width / 2, height: 40)
+                .overlay {
+                    Picker("Please choose a color", selection: $vm.addition) {
+                        ForEach(vm.additions, id: \.self) {
+                            Text($0.rawValue)
+                        }
+                    }
+                }
+        }
+        .padding()
+    }
+    
+    private var doneToolbarButon: some ToolbarContent {
+        ToolbarItemGroup(placement: .keyboard) {
+            Spacer()
+            Button("Гтово") { UIApplication.shared.endEditing() }
+        }
+    }
+    
+    private var supportToolbarButton: some ToolbarContent {
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
+            SupportButtonView(isShowingSupportView: $vm.isShowingSupportView)
+        }
     }
 }
 

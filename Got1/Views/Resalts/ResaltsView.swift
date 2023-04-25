@@ -30,7 +30,6 @@ struct ResaltsView_Previews: PreviewProvider {
             players: [Player(name: "sdfg", house: "Barateon")],
             addition: .danceWithDragons)
         )
-            .preferredColorScheme(.dark)
     }
 }
 

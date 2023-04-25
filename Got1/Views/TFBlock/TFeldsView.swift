@@ -13,29 +13,17 @@ struct TFeldsView: View {
     let height = UIScreen.main.bounds.height
     @FocusState private var focusedField: Int?
     var body: some View {
-        HStack {
-            VStack {
-                ForEach(1...4, id: \.self) { index  in
-                    TextField("Игрок \(index)", text: $players[index - 1])
-                        .submitLabel(.next)
-                        .focused($focusedField, equals: index)
-                        .frame(width: width / 2.2, height: height / 20)
-                        .font(.system(size: height / 30))
-                        .multilineTextAlignment(.center)
-                }
-            }
-            
-            VStack {
-                ForEach(5...8, id: \.self) { index in
-                    TextField("Игрок \(index)", text: $players[index - 1])
-                        .submitLabel(index == 8 ? .done : .next)
-                        .focused($focusedField, equals: index)
-                        .frame(width: width / 2.2, height: height / 20)
-                        .font(.system(size: height / 30))
-                        .multilineTextAlignment(.center)
-                }
+        VStack {
+            ForEach(1...8, id: \.self) { index  in
+                TextField("Игрок \(index)", text: $players[index - 1])
+                    .submitLabel(.next)
+                    .focused($focusedField, equals: index)
+                    .font(.system(size: height / 30))
             }
         }
+        .padding(.vertical, 10)
+        .padding(.horizontal, 15)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .onSubmit {
             switch focusedField {
             case 1: focusedField = 2

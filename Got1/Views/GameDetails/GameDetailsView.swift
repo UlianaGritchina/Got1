@@ -131,7 +131,6 @@ struct GameDetailsView: View {
             }
             .navigationTitle("Детали игры")
         }
-        .preferredColorScheme(.dark)
     }
 }
 

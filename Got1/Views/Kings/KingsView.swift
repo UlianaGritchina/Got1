@@ -54,7 +54,6 @@ struct KingsView: View {
             
             .toolbar { addBuuton }
         }
-        .preferredColorScheme(.dark)
     }
 }
 

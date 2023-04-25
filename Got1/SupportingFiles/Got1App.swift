@@ -26,8 +26,6 @@ struct Got1App: App {
                     .tabItem {
                         Label("Teams", systemImage: "person.3.fill")
                     }
-                
-               
             }
         }
     }

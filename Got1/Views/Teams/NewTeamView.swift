@@ -68,7 +68,6 @@ struct NewTeamView: View {
                     
                 }
             }.ignoresSafeArea()
-                .preferredColorScheme(.dark)
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()

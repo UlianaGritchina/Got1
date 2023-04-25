@@ -59,7 +59,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             
             
-        }.preferredColorScheme(.dark)
+        }
     }
 }
 

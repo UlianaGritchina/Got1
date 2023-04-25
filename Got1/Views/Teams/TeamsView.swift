@@ -34,16 +34,14 @@ struct TeamsView: View {
                 NewTeamView(vm: vm)
             }
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
-        
-        .preferredColorScheme(.dark)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct TeamsView_Previews: PreviewProvider {
     static var previews: some View {
         TeamsView()
-            .preferredColorScheme(.dark)
     }
 }
 
